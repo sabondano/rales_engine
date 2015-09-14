@@ -18,6 +18,9 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'pry'
+end
+
+group :development do
   gem 'binding_of_caller'
   gem 'better_errors'
 end
