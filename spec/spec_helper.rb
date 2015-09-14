@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start
+
 RSpec.configure do |config|
   config.backtrace_exclusion_patterns << %r{/gems/}
 
