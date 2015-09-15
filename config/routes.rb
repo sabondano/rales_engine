@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      get '/invoice_items/:id/invoice',  to: 'invoice_items#invoice'
+      get '/invoice_items/:id/item',     to: 'invoice_items#item'
+
       get '/invoices/:id/transactions',  to: 'invoices#transactions'
       get '/invoices/:id/invoice_items', to: 'invoices#invoice_items'
       get '/invoices/:id/items',         to: 'invoices#items'
