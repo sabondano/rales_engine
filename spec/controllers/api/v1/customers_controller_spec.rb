@@ -32,4 +32,52 @@ RSpec.describe Api::V1::CustomersController, type: :controller do
       expect(response.body).to eq('null')
     end
   end
+
+  describe 'GET #find' do
+    it 'responds successfully with an HTTP 200 status code' do
+      customer = Customer.create(first_name: 'Sebastian',
+                                 last_name:  'Abondano')
+
+      get :find, format: :json, first_name: customer.first_name
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+    end
+
+    it 'renders a JSON representation of the appropriate record' do
+      customer = Customer.create(first_name: 'Sebastian',
+                                 last_name:  'Abondano')
+
+      get :find, format: :json, first_name: customer.first_name
+      body = JSON.parse(response.body)
+
+      expect(body['id']).to eq(customer.id)
+      expect(body['first_name']).to eq('Sebastian')
+      expect(body['last_name']).to eq('Abondano')
+    end
+
+    it 'is case insensitive' do
+      customer = Customer.create(first_name: 'Sebastian',
+                                 last_name:  'Abondano')
+
+      get :find, format: :json, first_name: 'sebastian'
+      body = JSON.parse(response.body)
+
+      expect(body['id']).to eq(customer.id)
+      expect(body['first_name']).to eq('Sebastian')
+      expect(body['last_name']).to eq('Abondano')
+    end
+
+    it 'finds by id' do
+      customer = Customer.create(first_name: 'Sebastian',
+                                 last_name:  'Abondano')
+
+      get :find, format: :json, id: customer.id
+      body = JSON.parse(response.body)
+
+      expect(body['id']).to eq(customer.id)
+      expect(body['first_name']).to eq('Sebastian')
+      expect(body['last_name']).to eq('Abondano')
+    end
+  end
 end
