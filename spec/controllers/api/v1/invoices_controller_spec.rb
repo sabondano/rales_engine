@@ -81,4 +81,47 @@ RSpec.describe Api::V1::InvoicesController, type: :controller do
 
     end
   end
+
+describe 'GET #find_all' do
+    it 'responds successfully with an HTTP 200 status code' do
+      customer = Customer.create(first_name: 'Sebastian',
+                                 last_name:  'Abondano')
+      merchant = Merchant.create(name: 'Toys R Us')
+      invoice  = Invoice.create(customer_id: customer.id,
+                                merchant_id: merchant.id,
+                                status: 'shipped')
+
+      get :find_all, format: :json, id: invoice.id
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+    end
+
+
+    it 'renders a JSON representation of the appropriate record' do
+      customer = Customer.create(first_name: 'Sebastian',
+                                 last_name:  'Abondano')
+      merchant = Merchant.create(name: 'Toys R Us')
+      invoice  = Invoice.create(customer_id: customer.id,
+                                merchant_id: merchant.id,
+                                status: 'shipped')
+      Invoice.create(customer_id: customer.id,
+                     merchant_id: merchant.id,
+                     status: 'shipped')
+
+      get :find_all, format: :json, status: 'Shipped'
+      body = JSON.parse(response.body)
+
+      expect(body.count).to eq(2)
+      expect(body.first.count).to eq(6)
+      expect(body.first['id']).to eq(invoice.id)
+      expect(body.first['customer_id']).to eq(customer.id)
+      expect(body.first['merchant_id']).to eq(merchant.id)
+      expect(body.first['status']).to eq('shipped')
+      expect(Time.zone.parse(body.first['created_at']).to_s).to eq(invoice.created_at.to_s)
+      expect(Time.zone.parse(body.first['updated_at']).to_s).to eq(invoice.updated_at.to_s)
+
+    end
+end
+
 end
