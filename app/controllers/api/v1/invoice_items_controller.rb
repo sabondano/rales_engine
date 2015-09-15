@@ -6,19 +6,14 @@ class Api::V1::InvoiceItemsController < ApplicationController
   end
 
   def find
-    attribute, attribute_value = params.keys[0], params.values[0]
-
-    respond_with InvoiceItem.where(attribute => attribute_value).first
+    respond_with InvoiceItem.find_by_attribute(params.keys[0], params.values[0])
   end
 
   def find_all
-    attribute, attribute_value = params.keys[0], params.values[0]
-
-    respond_with InvoiceItem.where(attribute => attribute_value)
+    respond_with InvoiceItem.find_all_by_attribute(params.keys[0], params.values[0])
   end
 
   def random
-    offset = rand(InvoiceItem.count)
-    respond_with InvoiceItem.offset(offset).first
+    respond_with InvoiceItem.offset(rand(InvoiceItem.count)).first
   end
 end
