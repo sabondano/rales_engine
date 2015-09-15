@@ -94,4 +94,63 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       expect(Time.zone.parse(body['updated_at']).to_s).to eq(item.updated_at.to_s)
     end
   end
+
+  describe 'GET #find_all' do
+    it 'responds successfully with an HTTP 200 status code' do
+      merchant = Merchant.create(name: 'Toys R Us')
+      item = Item.create(name: 'Ball',
+                         description: 'This is the description.',
+                         unit_price: '12',
+                         merchant_id: merchant.id)
+
+      get :find_all, format: :json, name: item.name
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+    end
+
+    it 'renders a JSON representation of the appropriate record' do
+      merchant = Merchant.create(name: 'Toys R Us')
+      item = Item.create(name: 'Ball',
+                         description: 'This is the description.',
+                         unit_price: '12',
+                         merchant_id: merchant.id)
+      Item.create(name: 'Rocket',
+                  description: 'This is the description.',
+                  unit_price: '18',
+                  merchant_id: merchant.id)
+
+      get :find_all, format: :json, description: 'This is the description.'
+      body = JSON.parse(response.body)
+
+      expect(body.count).to eq(2)
+      expect(body.first.count).to eq(7)
+      expect(body.first['id']).to eq(item.id)
+      expect(body.first['name']).to eq('Ball')
+      expect(body.first['description']).to eq('This is the description.')
+      expect(body.first['unit_price']).to eq('12.0')
+      expect(Time.zone.parse(body.first['created_at']).to_s).to eq(item.created_at.to_s)
+      expect(Time.zone.parse(body.first['updated_at']).to_s).to eq(item.updated_at.to_s)
+    end
+
+    it 'finds by id' do
+      merchant = Merchant.create(name: 'Toys R Us')
+      item = Item.create(name: 'Ball',
+                         description: 'This is the description.',
+                         unit_price: '12',
+                         merchant_id: merchant.id)
+
+      get :find_all, format: :json, id: item.id
+      body = JSON.parse(response.body)
+
+      expect(body.first.count).to eq(7)
+      expect(body.first['id']).to eq(item.id)
+      expect(body.first['name']).to eq('Ball')
+      expect(body.first['description']).to eq('This is the description.')
+      expect(body.first['unit_price']).to eq('12.0')
+      expect(Time.zone.parse(body.first['created_at']).to_s).to eq(item.created_at.to_s)
+      expect(Time.zone.parse(body.first['updated_at']).to_s).to eq(item.updated_at.to_s)
+    end
+  end
+
 end

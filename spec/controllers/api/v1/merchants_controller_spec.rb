@@ -72,4 +72,48 @@ RSpec.describe Api::V1::MerchantsController, type: :controller do
     end
 
   end
+
+  describe 'GET #find_all' do
+    it 'responds successfully with an HTTP 200 status code' do
+      merchant = Merchant.create(name: 'Toys R Us')
+
+      get :find_all, format: :json, name: merchant.name
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+    end
+
+    it 'renders a JSON representation of the appropriate record' do
+      merchant = Merchant.create(name: 'Toys R Us')
+      
+      get :find_all, format: :json, name: merchant.name
+      body = JSON.parse(response.body)
+
+      expect(body.class).to eq(Array)
+      expect(body.first['id']).to eq(merchant.id)
+      expect(body.first['name']).to eq('Toys R Us')
+    end
+
+    it 'is case insensitive' do
+      merchant = Merchant.create(name: 'Toys R Us')
+      
+      get :find_all, format: :json, name: 'toys r us'
+      body = JSON.parse(response.body)
+
+      expect(body.first['id']).to eq(merchant.id)
+      expect(body.first['name']).to eq('Toys R Us')
+    end
+
+    it 'finds by id' do
+      merchant = Merchant.create(name: 'Toys R Us')
+      
+      get :find_all, format: :json, id: merchant.id
+      body = JSON.parse(response.body)
+
+      expect(body.first['id']).to eq(merchant.id)
+      expect(body.first['name']).to eq('Toys R Us')
+    end
+
+  end
+
 end

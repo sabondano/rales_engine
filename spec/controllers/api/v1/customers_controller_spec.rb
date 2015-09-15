@@ -80,4 +80,62 @@ RSpec.describe Api::V1::CustomersController, type: :controller do
       expect(body['last_name']).to eq('Abondano')
     end
   end
+
+  describe 'GET #find_all' do
+    it 'responds successfully with an HTTP 200 status code' do
+      customer = Customer.create(first_name: 'Sebastian',
+                                 last_name:  'Abondano')
+
+      get :find_all, format: :json, first_name: customer.first_name
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+    end
+
+    it 'renders a JSON representation of the appropriate records' do
+      customer = Customer.create(first_name: 'Sebastian',
+                                 last_name:  'Abondano')
+      Customer.create(first_name: 'Louis',
+                      last_name:  'Abondano')
+
+      get :find_all, format: :json, last_name: customer.last_name
+      body = JSON.parse(response.body)
+
+      expect(body.count).to eq(2)
+      expect(body.first['id']).to eq(customer.id)
+      expect(body.first['first_name']).to eq('Sebastian')
+      expect(body.first['last_name']).to eq('Abondano')
+    end
+
+    it 'is case insensitive' do
+      customer = Customer.create(first_name: 'Sebastian',
+                                 last_name:  'Abondano')
+      Customer.create(first_name: 'Louis',
+                      last_name:  'Abondano')
+
+      get :find_all, format: :json, last_name: 'abondano'
+      body = JSON.parse(response.body)
+
+      expect(body.count).to eq(2)
+      expect(body.first['id']).to eq(customer.id)
+      expect(body.first['first_name']).to eq('Sebastian')
+      expect(body.first['last_name']).to eq('Abondano')
+    end
+
+    it 'finds by id' do
+      customer = Customer.create(first_name: 'Sebastian',
+                                 last_name:  'Abondano')
+      Customer.create(first_name: 'Louis',
+                      last_name:  'Abondano')
+
+      get :find_all, format: :json, id: customer.id
+      body = JSON.parse(response.body)
+
+      expect(body.count).to eq(1)
+      expect(body.first['id']).to eq(customer.id)
+      expect(body.first['first_name']).to eq('Sebastian')
+      expect(body.first['last_name']).to eq('Abondano')
+    end
+  end
+
 end
