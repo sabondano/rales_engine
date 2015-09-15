@@ -5,31 +5,15 @@ class Api::V1::MerchantsController < ApplicationController
     respond_with Merchant.find_by(id: params[:id])
   end
 
-
   def find
-    attribute, attribute_value = params.keys[0], params.values[0]
-
-    if attribute_value.to_s == attribute_value.to_i.to_s
-      respond_with Merchant.where(attribute => attribute_value).first
-    else
-      respond_with Merchant.where("#{attribute} ilike ?",
-                                  "%#{attribute_value}%").first
-    end
+    respond_with Merchant.find_by_attribute(params.keys[0], params.values[0])
   end
 
   def find_all
-    attribute, attribute_value = params.keys[0], params.values[0]
-
-    if attribute_value.to_s == attribute_value.to_i.to_s
-      respond_with Merchant.where(attribute => attribute_value)
-    else
-      respond_with Merchant.where("#{attribute} ilike ?",
-                                  "%#{attribute_value}%")
-    end
+    respond_with Merchant.find_all_by_attribute(params.keys[0], params.values[0])
   end
 
   def random
-    offset = rand(Merchant.count)
-    respond_with Merchant.offset(offset).first
+    respond_with Merchant.offset(rand(Merchant.count)).first
   end
 end
