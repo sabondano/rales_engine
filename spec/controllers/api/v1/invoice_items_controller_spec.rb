@@ -174,4 +174,72 @@ RSpec.describe Api::V1::InvoiceItemsController, type: :controller do
       expect(Time.zone.parse(body.first['updated_at']).to_s).to eq(invoice_item.updated_at.to_s)
     end
   end
+
+  describe 'GET #random' do
+    it 'responds successfully with an HTTP 200 status code' do
+      customer    = Customer.create(first_name: 'Sebastian',
+                                    last_name:  'Abondano')
+      merchant    = Merchant.create(name: 'Toys R Us')
+      invoice     = Invoice.create(customer_id: customer.id,
+                                   merchant_id: merchant.id,
+                                   status:      'shipped')
+      item = Item.create(name:        'Ball',
+                         description: 'This is the description.',
+                         unit_price:  '12',
+                         merchant_id: 1)
+      invoice_item = InvoiceItem.create(item_id:    item.id,
+                                        invoice_id: invoice.id,
+                                        quantity:   '5',
+                                        unit_price: '12')
+      InvoiceItem.create(item_id:    item.id,
+                         invoice_id: invoice.id,
+                         quantity:   '1',
+                         unit_price: '12')
+
+      get :random, format: :json
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+    end
+
+    it 'renders a JSON representation of the appropriate records' do
+      customer    = Customer.create(first_name: 'Sebastian',
+                                    last_name:  'Abondano')
+      merchant    = Merchant.create(name: 'Toys R Us')
+      invoice     = Invoice.create(customer_id: customer.id,
+                                   merchant_id: merchant.id,
+                                   status:      'shipped')
+      item = Item.create(name:        'Ball',
+                         description: 'This is the description.',
+                         unit_price:  '12',
+                         merchant_id: 1)
+      invoice_item = InvoiceItem.create(item_id:    item.id,
+                                        invoice_id: invoice.id,
+                                        quantity:   '5',
+                                        unit_price: '12')
+      InvoiceItem.create(item_id:    item.id,
+                         invoice_id: invoice.id,
+                         quantity:   '1',
+                         unit_price: '12')
+
+      results = []
+      10.times do 
+        get :random, format: :json
+        body = JSON.parse(response.body, symbolize_names: true)
+        results << body[:id] 
+      end
+
+      expect(results.uniq.count).not_to eq(1)
+
+      get :random, format: :json
+      body = JSON.parse(response.body)
+
+      expect(body.count).to eq(7)
+      expect(body['id'].class).to eq(Fixnum)
+      expect(body['item_id'].class).to eq(Fixnum)
+      expect(body['invoice_id'].class).to eq(Fixnum)
+      expect(body['quantity'].class).to eq(Fixnum)
+      expect(body['unit_price'].class).to eq(String)
+    end
+  end
 end

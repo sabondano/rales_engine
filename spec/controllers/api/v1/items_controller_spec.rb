@@ -153,4 +153,52 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
     end
   end
 
+  describe 'GET #random' do
+    it 'responds successfully with an HTTP 200 status code' do
+      merchant = Merchant.create(name: 'Toys R Us')
+      item = Item.create(name: 'Ball',
+                         description: 'This is the description.',
+                         unit_price: '12',
+                         merchant_id: merchant.id)
+      Item.create(name: 'Rocket',
+                  description: 'This is the description.',
+                  unit_price: '18',
+                  merchant_id: merchant.id)
+      
+      get :random, format: :json
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+    end
+
+    it 'renders a JSON representation of the appropriate records' do
+      merchant = Merchant.create(name: 'Toys R Us')
+      item = Item.create(name: 'Ball',
+                         description: 'This is the description.',
+                         unit_price: '12',
+                         merchant_id: merchant.id)
+      Item.create(name: 'Rocket',
+                  description: 'This is the description.',
+                  unit_price: '18',
+                  merchant_id: merchant.id)
+
+      results = []
+      10.times do 
+        get :random, format: :json
+        body = JSON.parse(response.body, symbolize_names: true)
+        results << body[:id] 
+      end
+
+      expect(results.uniq.count).not_to eq(1)
+
+      get :random, format: :json
+      body = JSON.parse(response.body)
+
+      expect(body.count).to eq(7)
+      expect(body['id'].class).to eq(Fixnum)
+      expect(body['name'].class).to eq(String)
+      expect(body['description'].class).to eq(String)
+      expect(body['unit_price'].class).to eq(String)
+    end
+  end
 end

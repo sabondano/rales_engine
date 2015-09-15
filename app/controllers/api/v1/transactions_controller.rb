@@ -26,4 +26,9 @@ class Api::V1::TransactionsController < ApplicationController
                               "%#{attribute_value}%")
     end
   end
+
+  def random
+    offset = rand(Transaction.count)
+    respond_with Transaction.offset(offset).first
+  end
 end

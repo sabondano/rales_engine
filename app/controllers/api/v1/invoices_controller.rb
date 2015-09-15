@@ -26,4 +26,9 @@ class Api::V1::InvoicesController < ApplicationController
                                  "%#{attribute_value}%")
     end
   end
+
+  def random
+    offset = rand(Invoice.count)
+    respond_with Invoice.offset(offset).first
+  end
 end
