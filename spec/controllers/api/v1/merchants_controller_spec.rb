@@ -146,4 +146,50 @@ RSpec.describe Api::V1::MerchantsController, type: :controller do
       expect(body['name'].class).to eq(String)
     end
   end
+
+  describe 'GET #items' do
+    it 'responds successfully with an HTTP 200 status code' do
+      merchant = Merchant.create(name: 'Toys R Us')
+      item = Item.create(name: 'Ball',
+                         description: 'This is the description.',
+                         unit_price: '12',
+                         merchant_id: merchant.id)
+      Item.create(name: 'Toy',
+                  description: 'This is the description.',
+                  unit_price: '12',
+                  merchant_id: merchant.id)
+
+      get :items, format: :json, id: merchant.id
+      body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+      expect(body.count).to eq(2)
+      expect(body.first[:id]).to eq(item.id)
+      expect(body.first[:name]).to eq(item.name)
+    end
+  end
+
+  describe 'GET #invoices' do
+    it 'responds successfully with an HTTP 200 status code' do
+      customer = Customer.create(first_name: 'Sebastian',
+                                 last_name:  'Abondano')
+      merchant = Merchant.create(name: 'Toys R Us')
+      invoice  = Invoice.create(customer_id: customer.id,
+                                merchant_id: merchant.id,
+                                status: 'shipped')
+      Invoice.create(customer_id: customer.id,
+                     merchant_id: merchant.id,
+                     status: 'shipped')
+
+      get :invoices, format: :json, id: merchant.id
+      body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+      expect(body.count).to eq(2)
+      expect(body.first[:id]).to eq(invoice.id)
+      expect(body.first[:status]).to eq('shipped')
+    end
+  end
 end
