@@ -26,4 +26,9 @@ class Api::V1::ItemsController < ApplicationController
                               "%#{attribute_value}%")
     end
   end
+
+  def random
+    offset = rand(Item.count)
+    respond_with Item.offset(offset).first
+  end
 end

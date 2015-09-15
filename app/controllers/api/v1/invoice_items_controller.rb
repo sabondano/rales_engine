@@ -16,4 +16,9 @@ class Api::V1::InvoiceItemsController < ApplicationController
 
     respond_with InvoiceItem.where(attribute => attribute_value)
   end
+
+  def random
+    offset = rand(InvoiceItem.count)
+    respond_with InvoiceItem.offset(offset).first
+  end
 end

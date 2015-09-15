@@ -190,4 +190,59 @@ RSpec.describe Api::V1::TransactionsController, type: :controller do
     end
   end
 
+  describe 'GET #random' do
+    it 'responds successfully with an HTTP 200 status code' do
+      customer    = Customer.create(first_name: 'Sebastian',
+                                    last_name:  'Abondano')
+      merchant    = Merchant.create(name: 'Toys R Us')
+      invoice     = Invoice.create(customer_id: customer.id,
+                                   merchant_id: merchant.id,
+                                   status:      'shipped')
+      transaction = Transaction.create(invoice_id:         invoice.id,
+                                       credit_card_number: '4654405418249632',
+                                       result:             'success')
+      Transaction.create(invoice_id:         invoice.id,
+                         credit_card_number: '4654405418249632',
+                         result:             'success')
+
+
+      get :random, format: :json
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+    end
+
+    it 'renders a JSON representation of the appropriate records' do
+      customer    = Customer.create(first_name: 'Sebastian',
+                                    last_name:  'Abondano')
+      merchant    = Merchant.create(name: 'Toys R Us')
+      invoice     = Invoice.create(customer_id: customer.id,
+                                   merchant_id: merchant.id,
+                                   status:      'shipped')
+      transaction = Transaction.create(invoice_id:         invoice.id,
+                                       credit_card_number: '4654405418249632',
+                                       result:             'success')
+      Transaction.create(invoice_id:         invoice.id,
+                         credit_card_number: '4654405418249632',
+                         result:             'success')
+
+
+      results = []
+      10.times do 
+        get :random, format: :json
+        body = JSON.parse(response.body, symbolize_names: true)
+        results << body[:id] 
+      end
+
+      expect(results.uniq.count).not_to eq(1)
+
+      get :random, format: :json
+      body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(body[:id].class).to eq(Fixnum)
+      expect(body[:invoice_id].class).to eq(Fixnum)
+      expect(body[:credit_card_number].class).to eq(String)
+      expect(body[:result].class).to eq(String)
+    end
+  end
 end
