@@ -242,4 +242,63 @@ RSpec.describe Api::V1::InvoiceItemsController, type: :controller do
       expect(body['unit_price'].class).to eq(String)
     end
   end
+
+  describe 'GET #invoice' do
+    it 'responds successfully with an HTTP 200 status code' do
+      customer    = Customer.create(first_name: 'Sebastian',
+                                    last_name:  'Abondano')
+      merchant    = Merchant.create(name: 'Toys R Us')
+      invoice     = Invoice.create(customer_id: customer.id,
+                                   merchant_id: merchant.id,
+                                   status:      'shipped')
+      item = Item.create(name:        'Ball',
+                         description: 'This is the description.',
+                         unit_price:  '12',
+                         merchant_id: 1)
+      invoice_item = InvoiceItem.create(item_id:    item.id,
+                                        invoice_id: invoice.id,
+                                        quantity:   '5',
+                                        unit_price: '12')
+
+      get :invoice, format: :json, id: invoice_item.id
+      body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+      expect(body[:id]).to eq(invoice.id)
+      expect(body[:customer_id]).to eq(invoice.customer_id)
+      expect(body[:merchant_id]).to eq(invoice.merchant_id)
+      expect(body[:status]).to eq('shipped')
+    end
+  end
+
+  describe 'GET #item' do
+    it 'responds successfully with an HTTP 200 status code' do
+      customer    = Customer.create(first_name: 'Sebastian',
+                                    last_name:  'Abondano')
+      merchant    = Merchant.create(name: 'Toys R Us')
+      invoice     = Invoice.create(customer_id: customer.id,
+                                   merchant_id: merchant.id,
+                                   status:      'shipped')
+      item = Item.create(name:        'Ball',
+                         description: 'This is the description.',
+                         unit_price:  '12',
+                         merchant_id: 1)
+      invoice_item = InvoiceItem.create(item_id:    item.id,
+                                        invoice_id: invoice.id,
+                                        quantity:   '5',
+                                        unit_price: '12')
+
+      get :item, format: :json, id: invoice_item.id
+      body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+      expect(body[:id]).to eq(item.id)
+      expect(body[:name]).to eq(item.name)
+      expect(body[:description]).to eq(item.description)
+      expect(body[:unit_price]).to eq('12.0')
+      expect(body[:merchant_id]).to eq(item.merchant_id)
+    end
+  end
 end
