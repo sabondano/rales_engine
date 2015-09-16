@@ -245,4 +245,28 @@ RSpec.describe Api::V1::TransactionsController, type: :controller do
       expect(body[:result].class).to eq(String)
     end
   end
+
+  describe 'GET #invoice' do
+    it 'responds successfully with an HTTP 200 status code' do
+      customer    = Customer.create(first_name: 'Sebastian',
+                                    last_name:  'Abondano')
+      merchant    = Merchant.create(name: 'Toys R Us')
+      invoice     = Invoice.create(customer_id: customer.id,
+                                   merchant_id: merchant.id,
+                                   status:      'shipped')
+      transaction = Transaction.create(invoice_id:         invoice.id,
+                                       credit_card_number: '4654405418249632',
+                                       result:             'success')
+
+      get :invoice, format: :json, id: transaction.id
+      body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+      expect(body[:id]).to eq(invoice.id)
+      expect(body[:customer_id]).to eq(invoice.customer_id)
+      expect(body[:merchant_id]).to eq(invoice.merchant_id)
+      expect(body[:status]).to eq(invoice.status)
+    end
+  end
 end

@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      get '/customers/:id/invoices',      to: 'customers#invoices'
+      get '/customers/:id/transactions',  to: 'customers#transactions'
+
+      get '/transactions/:id/invoice', to: 'transactions#invoice'
+
+      get '/items/:id/invoice_items', to: 'items#invoice_items'
+      get '/items/:id/merchant',      to: 'items#merchant'
+
       get '/invoice_items/:id/invoice',  to: 'invoice_items#invoice'
       get '/invoice_items/:id/item',     to: 'invoice_items#item'
 
@@ -27,12 +35,12 @@ Rails.application.routes.draw do
       get '/items/find_all',            to: 'items#find_all'
       get '/transactions/find_all',     to: 'transactions#find_all'
 
-      get '/merchants/random', to: 'merchants#random'
-      get '/customers/random', to: 'customers#random'
+      get '/merchants/random',     to: 'merchants#random'
+      get '/customers/random',     to: 'customers#random'
       get '/invoice_items/random', to: 'invoice_items#random'
-      get '/invoices/random', to: 'invoices#random'
-      get '/items/random', to: 'items#random'
-      get '/transactions/random', to: 'transactions#random'
+      get '/invoices/random',      to: 'invoices#random'
+      get '/items/random',         to: 'items#random'
+      get '/transactions/random',  to: 'transactions#random'
 
       resources :customers,     only: [:show]
       resources :merchants,     only: [:show]
