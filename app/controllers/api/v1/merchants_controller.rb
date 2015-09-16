@@ -26,6 +26,6 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def most_revenue
-    respond_with Merchant.most_revenue(params[:quantity].to_i)
+    respond_with Merchant.most_revenue(params[:quantity].to_i), each_serializer: MerchantRevenueSerializer
   end
 end
