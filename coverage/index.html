@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-09-16T01:20:48-06:00">2015-09-16T01:20:48-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-09-16T09:48:07-06:00">2015-09-16T09:48:07-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -32,8 +32,8 @@
   <a name="AllFiles"></a>
   <div>
     <b>39</b> files in total.
-    <b>1205</b> relevant lines. 
-    <span class="green"><b>1205</b> lines covered</span> and
+    <b>1207</b> relevant lines. 
+    <span class="green"><b>1207</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -83,11 +83,11 @@
       <tr>
         <td class="strong"><a href="#f2f13e3e9370b79263d1394fbc5b9be78a44b9ea" class="src_link" title="app/controllers/api/v1/items_controller.rb">app/controllers/api/v1/items_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>31</td>
-        <td>16</td>
-        <td>16</td>
+        <td>37</td>
+        <td>19</td>
+        <td>19</td>
         <td>0</td>
-        <td>2.1</td>
+        <td>2.2</td>
       </tr>
       
       <tr>
@@ -137,7 +137,7 @@
         <td>11</td>
         <td>11</td>
         <td>0</td>
-        <td>7.2</td>
+        <td>6.1</td>
       </tr>
       
       <tr>
@@ -173,9 +173,9 @@
       <tr>
         <td class="strong"><a href="#3ba62a537e5b7b4907d9b2c2d524dbf9ff00ab5a" class="src_link" title="app/models/item.rb">app/models/item.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>7</td>
-        <td>5</td>
-        <td>5</td>
+        <td>8</td>
+        <td>4</td>
+        <td>4</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -1145,8 +1145,8 @@
     <h3>app/controllers/api/v1/items_controller.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>16</b> relevant lines. 
-      <span class="green"><b>16</b> lines covered</span> and
+      <b>19</b> relevant lines. 
+      <span class="green"><b>19</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1229,7 +1229,7 @@
         <li class="covered" data-hits="3" data-linenumber="13">
           <span class="hits">3</span>
           
-          <code class="ruby">    respond_with Item.find_by_attribute(params.keys[0], params.values[0])</code>
+          <code class="ruby">    respond_with Item.find_by(find_params)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="14">
@@ -1253,7 +1253,7 @@
         <li class="covered" data-hits="3" data-linenumber="17">
           <span class="hits">3</span>
           
-          <code class="ruby">    respond_with Item.find_all_by_attribute(params.keys[0], params.values[0])</code>
+          <code class="ruby">   respond_with Item.where(find_params)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="18">
@@ -1335,6 +1335,42 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="31">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="32">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  private</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="33">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="34">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def find_params</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="35">
+          <span class="hits">6</span>
+          
+          <code class="ruby">    params.permit(:id, :name, :description, :unit_price, :merchant_id, :created_at, :updated_at)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="36">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="37">
           
           
           <code class="ruby">end</code>
@@ -1904,14 +1940,14 @@
           <code class="ruby">    def find_by_attribute(attribute, attribute_value)</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="6">
-          <span class="hits">18</span>
+        <li class="covered" data-hits="15" data-linenumber="6">
+          <span class="hits">15</span>
           
           <code class="ruby">      if attribute_value.to_s == attribute_value.to_i.to_s</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="7">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="7" data-linenumber="7">
+          <span class="hits">7</span>
           
           <code class="ruby">        where(attribute =&gt; attribute_value).first</code>
         </li>
@@ -1928,8 +1964,8 @@
           <code class="ruby">        where(&quot;#{attribute} ilike ?&quot;,</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="10">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="8" data-linenumber="10">
+          <span class="hits">8</span>
           
           <code class="ruby">              &quot;%#{attribute_value}%&quot;).first</code>
         </li>
@@ -1958,14 +1994,14 @@
           <code class="ruby">    def find_all_by_attribute(attribute, attribute_value)</code>
         </li>
       
-        <li class="covered" data-hits="19" data-linenumber="15">
-          <span class="hits">19</span>
+        <li class="covered" data-hits="16" data-linenumber="15">
+          <span class="hits">16</span>
           
           <code class="ruby">      if attribute_value.to_s == attribute_value.to_i.to_s</code>
         </li>
       
-        <li class="covered" data-hits="9" data-linenumber="16">
-          <span class="hits">9</span>
+        <li class="covered" data-hits="8" data-linenumber="16">
+          <span class="hits">8</span>
           
           <code class="ruby">        where(attribute =&gt; attribute_value)</code>
         </li>
@@ -1976,8 +2012,8 @@
           <code class="ruby">      else</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="18">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="8" data-linenumber="18">
+          <span class="hits">8</span>
           
           <code class="ruby">        where(&quot;#{attribute} ilike ?&quot;,</code>
         </li>
@@ -2231,8 +2267,8 @@
     <h3>app/models/item.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>5</b> relevant lines. 
-      <span class="green"><b>5</b> lines covered</span> and
+      <b>4</b> relevant lines. 
+      <span class="green"><b>4</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -2270,13 +2306,19 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="6">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="6">
           
-          <code class="ruby">  include Finders</code>
+          
+          <code class="ruby">  # include Finders</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="8">
           
           
           <code class="ruby">end</code>
@@ -2525,7 +2567,7 @@
         <li class="covered" data-hits="27" data-linenumber="11">
           <span class="hits">27</span>
           
-          <code class="ruby">    (object.unit_price / 100).to_f</code>
+          <code class="ruby">    object.unit_price / 100</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="12">
@@ -2621,7 +2663,7 @@
         <li class="covered" data-hits="28" data-linenumber="11">
           <span class="hits">28</span>
           
-          <code class="ruby">    (object.unit_price / 100).to_f</code>
+          <code class="ruby">    object.unit_price / 100</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="12">
@@ -5813,7 +5855,7 @@
         <li class="covered" data-hits="1" data-linenumber="39">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(body.first[&#39;unit_price&#39;]).to eq(0.12)</code>
+          <code class="ruby">      expect(body.first[&#39;unit_price&#39;]).to eq(&#39;0.12&#39;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="40">
@@ -6137,7 +6179,7 @@
         <li class="covered" data-hits="1" data-linenumber="93">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(body[&#39;unit_price&#39;]).to eq(0.12)</code>
+          <code class="ruby">      expect(body[&#39;unit_price&#39;]).to eq(&#39;0.12&#39;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="94">
@@ -6497,7 +6539,7 @@
         <li class="covered" data-hits="1" data-linenumber="153">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(body[&#39;unit_price&#39;]).to eq(0.12)</code>
+          <code class="ruby">      expect(body[&#39;unit_price&#39;]).to eq(&#39;0.12&#39;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="154">
@@ -6845,7 +6887,7 @@
         <li class="covered" data-hits="1" data-linenumber="211">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(body.first[&#39;unit_price&#39;]).to eq(0.12)</code>
+          <code class="ruby">      expect(body.first[&#39;unit_price&#39;]).to eq(&#39;0.12&#39;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="212">
@@ -7265,7 +7307,7 @@
         <li class="covered" data-hits="1" data-linenumber="281">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(body[&#39;unit_price&#39;].class).to eq(Float)</code>
+          <code class="ruby">      expect(body[&#39;unit_price&#39;].class).to eq(String)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="282">
@@ -7613,7 +7655,7 @@
         <li class="covered" data-hits="1" data-linenumber="339">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(body[:unit_price]).to eq(0.12)</code>
+          <code class="ruby">      expect(body[:unit_price]).to eq(&#39;0.12&#39;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="340">
@@ -9203,7 +9245,7 @@
         <li class="covered" data-hits="1" data-linenumber="258">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(body.first[&#39;unit_price&#39;]).to eq(0.12)</code>
+          <code class="ruby">      expect(body.first[&#39;unit_price&#39;]).to eq(&#39;0.12&#39;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="259">
@@ -9815,7 +9857,7 @@
         <li class="covered" data-hits="1" data-linenumber="24">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(body.first[&#39;unit_price&#39;]).to eq(0.12)</code>
+          <code class="ruby">      expect(body.first[&#39;unit_price&#39;]).to eq(&#39;0.12&#39;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="25">
@@ -10007,7 +10049,7 @@
         <li class="covered" data-hits="1" data-linenumber="56">
           <span class="hits">1</span>
           
-          <code class="ruby">        expect(body[&#39;unit_price&#39;]).to eq(0.12)</code>
+          <code class="ruby">        expect(body[&#39;unit_price&#39;]).to eq(&#39;0.12&#39;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="57">
@@ -10253,7 +10295,7 @@
         <li class="covered" data-hits="1" data-linenumber="97">
           <span class="hits">1</span>
           
-          <code class="ruby">        expect(body[&#39;unit_price&#39;]).to eq(0.12)</code>
+          <code class="ruby">        expect(body[&#39;unit_price&#39;]).to eq(&#39;0.12&#39;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="98">
@@ -10367,7 +10409,7 @@
         <li class="covered" data-hits="1" data-linenumber="116">
           <span class="hits">1</span>
           
-          <code class="ruby">        expect(body[&#39;unit_price&#39;]).to eq(0.12)</code>
+          <code class="ruby">        expect(body[&#39;unit_price&#39;]).to eq(&#39;0.12&#39;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="117">
@@ -10601,7 +10643,7 @@
         <li class="covered" data-hits="1" data-linenumber="155">
           <span class="hits">1</span>
           
-          <code class="ruby">        expect(body.first[&#39;unit_price&#39;]).to eq(0.12)</code>
+          <code class="ruby">        expect(body.first[&#39;unit_price&#39;]).to eq(&#39;0.12&#39;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="156">
@@ -10715,7 +10757,7 @@
         <li class="covered" data-hits="1" data-linenumber="174">
           <span class="hits">1</span>
           
-          <code class="ruby">        expect(body.first[&#39;unit_price&#39;]).to eq(0.12)</code>
+          <code class="ruby">        expect(body.first[&#39;unit_price&#39;]).to eq(&#39;0.12&#39;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="175">
@@ -11021,7 +11063,7 @@
         <li class="covered" data-hits="1" data-linenumber="225">
           <span class="hits">1</span>
           
-          <code class="ruby">        expect(body[&#39;unit_price&#39;].class).to eq(Float)</code>
+          <code class="ruby">        expect(body[&#39;unit_price&#39;].class).to eq(String)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="226">

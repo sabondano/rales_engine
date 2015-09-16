@@ -36,7 +36,7 @@ RSpec.describe Api::V1::InvoiceItemsController, type: :controller do
       expect(body.first['item_id']).to eq(item.id)
       expect(body.first['invoice_id']).to eq(invoice.id)
       expect(body.first['quantity']).to eq(5)
-      expect(body.first['unit_price']).to eq(0.12)
+      expect(body.first['unit_price']).to eq('0.12')
     end
   end
 
@@ -90,7 +90,7 @@ RSpec.describe Api::V1::InvoiceItemsController, type: :controller do
       expect(body['item_id']).to eq(item.id)
       expect(body['invoice_id']).to eq(invoice.id)
       expect(body['quantity']).to eq(5)
-      expect(body['unit_price']).to eq(0.12)
+      expect(body['unit_price']).to eq('0.12')
       expect(Time.zone.parse(body['created_at']).to_s).to eq(invoice_item.created_at.to_s)
       expect(Time.zone.parse(body['updated_at']).to_s).to eq(invoice_item.updated_at.to_s)
     end
@@ -150,7 +150,7 @@ RSpec.describe Api::V1::InvoiceItemsController, type: :controller do
       expect(body['item_id']).to eq(item.id)
       expect(body['invoice_id']).to eq(invoice.id)
       expect(body['quantity']).to eq(5)
-      expect(body['unit_price']).to eq(0.12)
+      expect(body['unit_price']).to eq('0.12')
       expect(Time.zone.parse(body['created_at']).to_s).to eq(invoice_item.created_at.to_s)
       expect(Time.zone.parse(body['updated_at']).to_s).to eq(invoice_item.updated_at.to_s)
     end
@@ -208,7 +208,7 @@ RSpec.describe Api::V1::InvoiceItemsController, type: :controller do
       expect(body.first['item_id']).to eq(item.id)
       expect(body.first['invoice_id']).to eq(invoice.id)
       expect(body.first['quantity']).to eq(5)
-      expect(body.first['unit_price']).to eq(0.12)
+      expect(body.first['unit_price']).to eq('0.12')
       expect(Time.zone.parse(body.first['created_at']).to_s).to eq(invoice_item.created_at.to_s)
       expect(Time.zone.parse(body.first['updated_at']).to_s).to eq(invoice_item.updated_at.to_s)
     end
@@ -278,7 +278,7 @@ RSpec.describe Api::V1::InvoiceItemsController, type: :controller do
       expect(body['item_id'].class).to eq(Fixnum)
       expect(body['invoice_id'].class).to eq(Fixnum)
       expect(body['quantity'].class).to eq(Fixnum)
-      expect(body['unit_price'].class).to eq(Float)
+      expect(body['unit_price'].class).to eq(String)
     end
   end
 
@@ -336,7 +336,7 @@ RSpec.describe Api::V1::InvoiceItemsController, type: :controller do
       expect(body[:id]).to eq(item.id)
       expect(body[:name]).to eq(item.name)
       expect(body[:description]).to eq(item.description)
-      expect(body[:unit_price]).to eq(0.12)
+      expect(body[:unit_price]).to eq('0.12')
       expect(body[:merchant_id]).to eq(item.merchant_id)
     end
   end

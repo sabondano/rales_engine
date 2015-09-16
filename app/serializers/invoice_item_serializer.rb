@@ -8,6 +8,6 @@ class InvoiceItemSerializer < ActiveModel::Serializer
              :updated_at
 
   def unit_price
-    (object.unit_price / 100).to_f
+    object.unit_price / 100
   end
 end
