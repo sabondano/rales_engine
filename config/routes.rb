@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  namespace :api do
+  namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
       get '/merchants/most_revenue', to: 'merchants#most_revenue'
 
@@ -50,7 +50,6 @@ Rails.application.routes.draw do
       resources :invoices,      only: [:show]
       resources :transactions,  only: [:show]
       resources :invoice_items, only: [:show]
-
     end
   end
 end
