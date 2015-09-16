@@ -165,4 +165,53 @@ RSpec.describe Api::V1::CustomersController, type: :controller do
       expect(results.uniq.count).not_to eq(1)
     end
   end
+
+  describe 'GET #invoices' do
+    it 'responds successfully with an HTTP 200 status code' do
+      customer    = Customer.create(first_name: 'Sebastian',
+                                    last_name:  'Abondano')
+      merchant    = Merchant.create(name: 'Toys R Us')
+      invoice     = Invoice.create(customer_id: customer.id,
+                                   merchant_id: merchant.id,
+                                   status:      'shipped')
+      Invoice.create(customer_id: customer.id,
+                     merchant_id: merchant.id,
+                     status:      'ordered')
+
+      get :invoices, format: :json, id: customer.id
+      body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+      expect(body.count).to eq(2)
+      expect(body.first[:status]).to eq('shipped')
+      expect(body.last[:status]).to eq('ordered')
+    end
+  end
+
+  describe 'GET #transactions' do
+    it 'responds successfully with an HTTP 200 status code' do
+      customer    = Customer.create(first_name: 'Sebastian',
+                                    last_name:  'Abondano')
+      merchant    = Merchant.create(name: 'Toys R Us')
+      invoice     = Invoice.create(customer_id: customer.id,
+                                   merchant_id: merchant.id,
+                                   status:      'shipped')
+      transaction = Transaction.create(invoice_id:         invoice.id,
+                                       credit_card_number: '4654405418249632',
+                                       result:             'failed')
+      Transaction.create(invoice_id:         invoice.id,
+                         credit_card_number: '4654405418249632',
+                         result:             'success')
+
+      get :transactions, format: :json, id: customer.id
+      body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+      expect(body.count).to eq(2)
+      expect(body.first[:id]).to eq(transaction.id)
+      expect(body.first[:result]).to eq(transaction.result)
+    end
+  end
 end
