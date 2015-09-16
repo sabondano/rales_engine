@@ -10,11 +10,11 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def find
-    respond_with Merchant.find_by_attribute(params.keys[0], params.values[0])
+    respond_with Merchant.find_by(find_params)
   end
 
   def find_all
-    respond_with Merchant.find_all_by_attribute(params.keys[0], params.values[0])
+    respond_with Merchant.where(find_params)
   end
 
   def random
@@ -32,5 +32,11 @@ class Api::V1::MerchantsController < ApplicationController
   def most_revenue
     respond_with Merchant.most_revenue(params[:quantity].to_i),
       each_serializer: MerchantRevenueSerializer
+  end
+
+  private
+
+  def find_params
+    params.permit(:id, :name, :created_at, :updated_at)
   end
 end

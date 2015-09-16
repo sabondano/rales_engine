@@ -64,16 +64,6 @@ RSpec.describe Api::V1::MerchantsController, type: :controller do
       expect(body['name']).to eq('Toys R Us')
     end
 
-    it 'is case insensitive' do
-      merchant = Merchant.create(name: 'Toys R Us')
-
-      get :find, format: :json, name: 'toys r us'
-      body = JSON.parse(response.body)
-
-      expect(body['id']).to eq(merchant.id)
-      expect(body['name']).to eq('Toys R Us')
-    end
-
     it 'finds by id' do
       merchant = Merchant.create(name: 'Toys R Us')
 
@@ -103,16 +93,6 @@ RSpec.describe Api::V1::MerchantsController, type: :controller do
       body = JSON.parse(response.body)
 
       expect(body.class).to eq(Array)
-      expect(body.first['id']).to eq(merchant.id)
-      expect(body.first['name']).to eq('Toys R Us')
-    end
-
-    it 'is case insensitive' do
-      merchant = Merchant.create(name: 'Toys R Us')
-
-      get :find_all, format: :json, name: 'toys r us'
-      body = JSON.parse(response.body)
-
       expect(body.first['id']).to eq(merchant.id)
       expect(body.first['name']).to eq('Toys R Us')
     end

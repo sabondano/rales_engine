@@ -4,8 +4,6 @@ class Merchant < ActiveRecord::Base
   has_many :invoice_items, through: :invoices
   has_many :transactions, through: :invoices
 
-  include Finders
-
   def self.most_revenue(quantity)
     all.sort_by(&:revenue).reverse.first(quantity)
   end
