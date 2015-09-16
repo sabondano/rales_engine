@@ -92,7 +92,7 @@ RSpec.describe Api::V1::InvoicesController, type: :controller do
                                 merchant_id: merchant.id,
                                 status: 'shipped')
 
-      get :find, format: :json, status: 'Shipped'
+      get :find, format: :json, status: 'shipped'
       body = JSON.parse(response.body)
 
       expect(body.count).to eq(6)
@@ -133,7 +133,7 @@ RSpec.describe Api::V1::InvoicesController, type: :controller do
                      merchant_id: merchant.id,
                      status: 'shipped')
 
-      get :find_all, format: :json, status: 'Shipped'
+      get :find_all, format: :json, status: 'shipped'
       body = JSON.parse(response.body)
 
       expect(body.count).to eq(2)

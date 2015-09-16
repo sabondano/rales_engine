@@ -108,7 +108,7 @@ RSpec.describe Api::V1::TransactionsController, type: :controller do
                                          credit_card_number: '4654405418249632',
                                          result:             'success')
 
-        get :find, format: :json, result: 'Success'
+        get :find, format: :json, result: 'success'
         body = JSON.parse(response.body)
 
         expect(body.count).to eq(6)
@@ -176,7 +176,7 @@ RSpec.describe Api::V1::TransactionsController, type: :controller do
                            credit_card_number: '4654405418249632',
                            result:             'success')
 
-        get :find_all, format: :json, result: 'Success'
+        get :find_all, format: :json, result: 'success'
         body = JSON.parse(response.body)
 
         expect(body.count).to eq(2)
