@@ -2342,34 +2342,6 @@
       "/Users/sebastianabondano/dropbox/sebastian/studies/turing/3module/18week/rales_engine/app/models/transaction.rb": [
         1,
         1,
-        null,
-        1,
-        null
-      ],
-      "/Users/sebastianabondano/dropbox/sebastian/studies/turing/3module/18week/rales_engine/app/models/concerns/finders.rb": [
-        1,
-        1,
-        null,
-        1,
-        1,
-        0,
-        0,
-        null,
-        null,
-        0,
-        null,
-        null,
-        null,
-        1,
-        0,
-        0,
-        null,
-        0,
-        null,
-        null,
-        null,
-        null,
-        null,
         null
       ],
       "/Users/sebastianabondano/dropbox/sebastian/studies/turing/3module/18week/rales_engine/app/models/item.rb": [
@@ -2422,6 +2394,6 @@
         null
       ]
     },
-    "timestamp": 1442423532
+    "timestamp": 1442424887
   }
 }
