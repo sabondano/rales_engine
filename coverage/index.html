@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-09-15T22:13:26-06:00">2015-09-15T22:13:26-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-09-15T23:20:46-06:00">2015-09-15T23:20:46-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,15 +25,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.31
+         1.44
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>36</b> files in total.
-    <b>1100</b> relevant lines. 
-    <span class="green"><b>1100</b> lines covered</span> and
+    <b>37</b> files in total.
+    <b>1104</b> relevant lines. 
+    <span class="green"><b>1104</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -93,7 +93,7 @@
       <tr>
         <td class="strong"><a href="#6d3029a79e6f0114684830bd30617a6d7d680ccd" class="src_link" title="app/controllers/api/v1/merchants_controller.rb">app/controllers/api/v1/merchants_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>31</td>
+        <td>32</td>
         <td>16</td>
         <td>16</td>
         <td>0</td>
@@ -113,11 +113,11 @@
       <tr>
         <td class="strong"><a href="#343f3a1f328321db1f71f7e100ed54d17b048dee" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>5</td>
-        <td>2</td>
-        <td>2</td>
+        <td>9</td>
+        <td>4</td>
+        <td>4</td>
         <td>0</td>
-        <td>1.0</td>
+        <td>35.8</td>
       </tr>
       
       <tr>
@@ -157,7 +157,7 @@
         <td>9</td>
         <td>9</td>
         <td>0</td>
-        <td>1.3</td>
+        <td>1.6</td>
       </tr>
       
       <tr>
@@ -187,7 +187,7 @@
         <td>10</td>
         <td>10</td>
         <td>0</td>
-        <td>1.3</td>
+        <td>1.5</td>
       </tr>
       
       <tr>
@@ -196,6 +196,16 @@
         <td>5</td>
         <td>3</td>
         <td>3</td>
+        <td>0</td>
+        <td>1.0</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#11187258ef468eb761421830c94ac3f818beb542" class="src_link" title="app/serializers/merchant_revenue_serializer.rb">app/serializers/merchant_revenue_serializer.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>7</td>
+        <td>2</td>
+        <td>2</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -1403,16 +1413,22 @@
         <li class="covered" data-hits="1" data-linenumber="29">
           <span class="hits">1</span>
           
-          <code class="ruby">    respond_with Merchant.most_revenue(params[:quantity])</code>
+          <code class="ruby">    respond_with Merchant.most_revenue(params[:quantity].to_i),</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="30">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">      each_serializer: MerchantRevenueSerializer</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="31">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="32">
           
           
           <code class="ruby">end</code>
@@ -1583,8 +1599,8 @@
     <h3>app/controllers/application_controller.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>2</b> relevant lines. 
-      <span class="green"><b>2</b> lines covered</span> and
+      <b>4</b> relevant lines. 
+      <span class="green"><b>4</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1617,6 +1633,30 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="5">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="6">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def default_serializer_options</code>
+        </li>
+      
+        <li class="covered" data-hits="140" data-linenumber="7">
+          <span class="hits">140</span>
+          
+          <code class="ruby">    { root: false }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="8">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="9">
           
           
           <code class="ruby">end</code>
@@ -1946,8 +1986,8 @@
           <code class="ruby">  def self.paid</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="11">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="6" data-linenumber="11">
+          <span class="hits">6</span>
           
           <code class="ruby">    joins(:transactions).where(&quot;result = &#39;success&#39;&quot;)</code>
         </li>
@@ -2174,10 +2214,10 @@
           <code class="ruby">  def revenue</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="14">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="6" data-linenumber="14">
+          <span class="hits">6</span>
           
-          <code class="ruby">    invoices.paid.joins(:invoice_items).sum(&#39;unit_price * quantity&#39;)</code>
+          <code class="ruby">    (invoices.paid.joins(:invoice_items).sum(&#39;unit_price * quantity&#39;) / 100).to_f</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="15">
@@ -2235,6 +2275,66 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="5">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
+        <div class="source_table" id="11187258ef468eb761421830c94ac3f818beb542">
+  <div class="header">
+    <h3>app/serializers/merchant_revenue_serializer.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>2</b> relevant lines. 
+      <span class="green"><b>2</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class MerchantRevenueSerializer &lt; ActiveModel::Serializer</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  attributes :id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="3">
+          
+          
+          <code class="ruby">             :name,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="4">
+          
+          
+          <code class="ruby">             :created_at,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="5">
+          
+          
+          <code class="ruby">             :updated_at,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby">             :revenue</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
           
           
           <code class="ruby">end</code>
@@ -13643,7 +13743,7 @@
         <li class="never" data-hits="" data-linenumber="29">
           
           
-          <code class="ruby">                                        unit_price: &#39;12&#39;)</code>
+          <code class="ruby">                                        unit_price: &#39;1200&#39;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="30">
@@ -13667,7 +13767,7 @@
         <li class="never" data-hits="" data-linenumber="33">
           
           
-          <code class="ruby">                         unit_price: &#39;12&#39;)</code>
+          <code class="ruby">                         unit_price: &#39;1200&#39;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="34">
@@ -13679,13 +13779,13 @@
         <li class="covered" data-hits="1" data-linenumber="35">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(merchant.revenue).to eq(12.0)</code>
+          <code class="ruby">      expect(merchant.revenue).to eq(12.00)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="36">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(merchant_2.revenue).to eq(60.0)</code>
+          <code class="ruby">      expect(merchant_2.revenue).to eq(60.00)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="37">

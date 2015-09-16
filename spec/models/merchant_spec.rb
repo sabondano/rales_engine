@@ -26,13 +26,13 @@ describe Merchant do
       invoice_item = InvoiceItem.create(item_id:    item.id,
                                         invoice_id: invoice.id,
                                         quantity:   '1',
-                                        unit_price: '12')
+                                        unit_price: '1200')
       InvoiceItem.create(item_id: item.id,
                          invoice_id: invoice_2.id,
                          quantity: '5',
-                         unit_price: '12')
+                         unit_price: '1200')
 
-      expect(merchant.revenue).to eq(12.0)
-      expect(merchant_2.revenue).to eq(60.0)
+      expect(merchant.revenue).to eq(12.00)
+      expect(merchant_2.revenue).to eq(60.00)
   end
 end

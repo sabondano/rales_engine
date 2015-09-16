@@ -541,6 +541,10 @@
         null,
         null,
         1,
+        null,
+        1,
+        140,
+        null,
         null
       ],
       "/Users/sebastianabondano/dropbox/sebastian/studies/turing/3module/18week/rales_engine/spec/controllers/api/v1/invoice_items_controller_spec.rb": [
@@ -1801,6 +1805,7 @@
         1,
         1,
         null,
+        null,
         null
       ],
       "/Users/sebastianabondano/dropbox/sebastian/studies/turing/3module/18week/rales_engine/spec/controllers/api/v1/transactions_controller_spec.rb": [
@@ -2156,7 +2161,7 @@
         null,
         null,
         1,
-        4,
+        6,
         null,
         null
       ],
@@ -2205,7 +2210,7 @@
         1,
         null,
         1,
-        4,
+        6,
         null,
         null
       ],
@@ -2232,8 +2237,17 @@
         null,
         1,
         null
+      ],
+      "/Users/sebastianabondano/dropbox/sebastian/studies/turing/3module/18week/rales_engine/app/serializers/merchant_revenue_serializer.rb": [
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null
       ]
     },
-    "timestamp": 1442376805
+    "timestamp": 1442380846
   }
 }
