@@ -255,7 +255,7 @@ RSpec.describe Api::V1::InvoicesController, type: :controller do
       expect(body.first['item_id']).to eq(item.id)
       expect(body.first['invoice_id']).to eq(invoice.id)
       expect(body.first['quantity']).to eq(5)
-      expect(body.first['unit_price']).to eq('12.0')
+      expect(body.first['unit_price']).to eq(0.12)
     end
   end
 

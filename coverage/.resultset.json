@@ -2405,6 +2405,36 @@
         1,
         null
       ],
+      "/Users/sebastianabondano/dropbox/sebastian/studies/turing/3module/18week/rales_engine/app/serializers/invoice_item_serializer.rb": [
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        27,
+        null,
+        null
+      ],
+      "/Users/sebastianabondano/dropbox/sebastian/studies/turing/3module/18week/rales_engine/app/serializers/item_serializer.rb": [
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        28,
+        null,
+        null
+      ],
       "/Users/sebastianabondano/dropbox/sebastian/studies/turing/3module/18week/rales_engine/app/serializers/merchant_revenue_serializer.rb": [
         1,
         1,
@@ -2415,6 +2445,6 @@
         null
       ]
     },
-    "timestamp": 1442385993
+    "timestamp": 1442388048
   }
 }
