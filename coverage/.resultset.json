@@ -2398,9 +2398,6 @@
         null,
         null,
         null,
-        1,
-        27,
-        null,
         null
       ],
       "/Users/sebastianabondano/dropbox/sebastian/studies/turing/3module/18week/rales_engine/app/serializers/item_serializer.rb": [
@@ -2412,9 +2409,6 @@
         null,
         null,
         null,
-        null,
-        1,
-        28,
         null,
         null
       ],
@@ -2428,6 +2422,6 @@
         null
       ]
     },
-    "timestamp": 1442421197
+    "timestamp": 1442423532
   }
 }

@@ -21,7 +21,7 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       expect(body.first['id']).to eq(item.id)
       expect(body.first['name']).to eq('Ball')
       expect(body.first['description']).to eq('This is the description.')
-      expect(body.first['unit_price']).to eq('0.12')
+      expect(body.first['unit_price']).to eq('12.0')
     end
   end
 
@@ -53,7 +53,7 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
         expect(body['id']).to eq(item.id)
         expect(body['name']).to eq('Ball')
         expect(body['description']).to eq('This is the description.')
-        expect(body['unit_price']).to eq('0.12')
+        expect(body['unit_price']).to eq('12.0')
         expect(Time.zone.parse(body['created_at']).to_s).to eq(item.created_at.to_s)
         expect(Time.zone.parse(body['updated_at']).to_s).to eq(item.updated_at.to_s)
       end
@@ -94,7 +94,7 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
         expect(body['id']).to eq(item.id)
         expect(body['name']).to eq('Ball')
         expect(body['description']).to eq('This is the description.')
-        expect(body['unit_price']).to eq('0.12')
+        expect(body['unit_price']).to eq('12.0')
         expect(Time.zone.parse(body['created_at']).to_s).to eq(item.created_at.to_s)
         expect(Time.zone.parse(body['updated_at']).to_s).to eq(item.updated_at.to_s)
       end
@@ -113,7 +113,7 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
         expect(body['id']).to eq(item.id)
         expect(body['name']).to eq('Ball')
         expect(body['description']).to eq('This is the description.')
-        expect(body['unit_price']).to eq('0.12')
+        expect(body['unit_price']).to eq('12.0')
         expect(Time.zone.parse(body['created_at']).to_s).to eq(item.created_at.to_s)
         expect(Time.zone.parse(body['updated_at']).to_s).to eq(item.updated_at.to_s)
       end
@@ -152,7 +152,7 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
         expect(body.first['id']).to eq(item.id)
         expect(body.first['name']).to eq('Ball')
         expect(body.first['description']).to eq('This is the description.')
-        expect(body.first['unit_price']).to eq('0.12')
+        expect(body.first['unit_price']).to eq('12.0')
         expect(Time.zone.parse(body.first['created_at']).to_s).to eq(item.created_at.to_s)
         expect(Time.zone.parse(body.first['updated_at']).to_s).to eq(item.updated_at.to_s)
       end
@@ -171,7 +171,7 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
         expect(body.first['id']).to eq(item.id)
         expect(body.first['name']).to eq('Ball')
         expect(body.first['description']).to eq('This is the description.')
-        expect(body.first['unit_price']).to eq('0.12')
+        expect(body.first['unit_price']).to eq('12.0')
         expect(Time.zone.parse(body.first['created_at']).to_s).to eq(item.created_at.to_s)
         expect(Time.zone.parse(body.first['updated_at']).to_s).to eq(item.updated_at.to_s)
       end

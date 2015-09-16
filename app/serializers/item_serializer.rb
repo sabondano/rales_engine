@@ -7,7 +7,4 @@ class ItemSerializer < ActiveModel::Serializer
              :created_at,
              :updated_at
 
-  def unit_price
-    object.unit_price / 100
-  end
 end
