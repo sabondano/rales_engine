@@ -73,18 +73,6 @@ RSpec.describe Api::V1::CustomersController, type: :controller do
       expect(body['last_name']).to eq('Abondano')
     end
 
-    it 'is case insensitive' do
-      customer = Customer.create(first_name: 'Sebastian',
-                                 last_name:  'Abondano')
-
-      get :find, format: :json, first_name: 'sebastian'
-      body = JSON.parse(response.body)
-
-      expect(body['id']).to eq(customer.id)
-      expect(body['first_name']).to eq('Sebastian')
-      expect(body['last_name']).to eq('Abondano')
-    end
-
     it 'finds by id' do
       customer = Customer.create(first_name: 'Sebastian',
                                  last_name:  'Abondano')
@@ -116,21 +104,6 @@ RSpec.describe Api::V1::CustomersController, type: :controller do
                       last_name:  'Abondano')
 
       get :find_all, format: :json, last_name: customer.last_name
-      body = JSON.parse(response.body)
-
-      expect(body.count).to eq(2)
-      expect(body.first['id']).to eq(customer.id)
-      expect(body.first['first_name']).to eq('Sebastian')
-      expect(body.first['last_name']).to eq('Abondano')
-    end
-
-    it 'is case insensitive' do
-      customer = Customer.create(first_name: 'Sebastian',
-                                 last_name:  'Abondano')
-      Customer.create(first_name: 'Louis',
-                      last_name:  'Abondano')
-
-      get :find_all, format: :json, last_name: 'abondano'
       body = JSON.parse(response.body)
 
       expect(body.count).to eq(2)
