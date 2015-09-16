@@ -1,6 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::CustomersController, type: :controller do
+  describe 'GET #index' do
+    it 'responds successfully with an HTTP 200 status code' do
+      customer  = Customer.create(first_name: 'Sebastian',
+                                 last_name:   'Abondano')
+      customer_2 = Customer.create(first_name: 'Louis',
+                                   last_name:  'Abondano')
+
+      get :index, format: :json
+      body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+      expect(body.count).to eq(2)
+      expect(body.first[:first_name]).to eq('Sebastian')
+      expect(body.last[:first_name]).to eq('Louis')
+    end
+  end
   describe 'GET #show' do
     it 'responds successfully with an HTTP 200 status code' do
       customer = Customer.create(first_name: 'Sebastian',

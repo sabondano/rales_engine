@@ -1,6 +1,45 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::InvoiceItemsController, type: :controller do
+  describe 'GET #index' do
+    it 'responds successfully with an HTTP 200 status code' do
+      customer    = Customer.create(first_name: 'Sebastian',
+                                    last_name:  'Abondano')
+      merchant    = Merchant.create(name: 'Toys R Us')
+      invoice     = Invoice.create(customer_id: customer.id,
+                                   merchant_id: merchant.id,
+                                   status:      'shipped')
+      item = Item.create(name:        'Ball',
+                         description: 'This is the description.',
+                         unit_price:  '12',
+                         merchant_id: 1)
+
+      invoice_item = InvoiceItem.create(item_id:    item.id,
+                                        invoice_id: invoice.id,
+                                        quantity:   '5',
+                                        unit_price: '12')
+      InvoiceItem.create(item_id:    item.id,
+                         invoice_id: invoice.id,
+                         quantity:   '1',
+                         unit_price: '12')
+
+      get :index, format: :json
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+
+      get :find_all, format: :json, item_id: invoice_item.item_id
+      body = JSON.parse(response.body)
+      expect(body.count).to eq(2)
+      expect(body.first.count).to eq(7)
+      expect(body.first['id']).to eq(invoice_item.id)
+      expect(body.first['item_id']).to eq(item.id)
+      expect(body.first['invoice_id']).to eq(invoice.id)
+      expect(body.first['quantity']).to eq(5)
+      expect(body.first['unit_price']).to eq('12.0')
+    end
+  end
+
   describe 'GET #show' do
     it 'responds successfully with an HTTP 200 status code' do
       customer    = Customer.create(first_name: 'Sebastian',
@@ -82,7 +121,7 @@ RSpec.describe Api::V1::InvoiceItemsController, type: :controller do
                                         unit_price: '12')
 
       get :find, format: :json, item_id: invoice_item.item_id
-      
+
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
@@ -105,7 +144,7 @@ RSpec.describe Api::V1::InvoiceItemsController, type: :controller do
 
       get :find, format: :json, item_id: invoice_item.item_id
       body = JSON.parse(response.body)
-      
+
       expect(body.count).to eq(7)
       expect(body['id']).to eq(invoice_item.id)
       expect(body['item_id']).to eq(item.id)
@@ -135,7 +174,7 @@ RSpec.describe Api::V1::InvoiceItemsController, type: :controller do
                                         unit_price: '12')
 
       get :find_all, format: :json, item_id: invoice_item.item_id
-      
+
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end

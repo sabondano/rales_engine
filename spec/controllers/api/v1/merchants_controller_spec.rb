@@ -1,6 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::MerchantsController, type: :controller do
+  describe 'GET #index' do
+    it 'responds successfully with an HTTP 200 status code' do
+      merchant = Merchant.create(name: 'Toys R Us')
+
+      get :index, format: :json
+      body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+      expect(body.first[:name]).to eq(merchant.name)
+    end
+  end
+
   describe 'GET #show' do
     it 'responds successfully with an HTTP 200 status code' do
       merchant = Merchant.create(name: 'Toys R Us')
@@ -23,7 +36,7 @@ RSpec.describe Api::V1::MerchantsController, type: :controller do
       expect(Time.zone.parse(body['created_at']).to_s).to eq(merchant.created_at.to_s)
       expect(Time.zone.parse(body['updated_at']).to_s).to eq(merchant.updated_at.to_s)
     end
-    
+
     it 'renders null if the record is not found' do
       get :show, format: :json, id: 1000
 
@@ -43,7 +56,7 @@ RSpec.describe Api::V1::MerchantsController, type: :controller do
 
     it 'renders a JSON representation of the appropriate record' do
       merchant = Merchant.create(name: 'Toys R Us')
-      
+
       get :find, format: :json, name: merchant.name
       body = JSON.parse(response.body)
 
@@ -53,7 +66,7 @@ RSpec.describe Api::V1::MerchantsController, type: :controller do
 
     it 'is case insensitive' do
       merchant = Merchant.create(name: 'Toys R Us')
-      
+
       get :find, format: :json, name: 'toys r us'
       body = JSON.parse(response.body)
 
@@ -63,7 +76,7 @@ RSpec.describe Api::V1::MerchantsController, type: :controller do
 
     it 'finds by id' do
       merchant = Merchant.create(name: 'Toys R Us')
-      
+
       get :find, format: :json, id: merchant.id
       body = JSON.parse(response.body)
 
@@ -85,7 +98,7 @@ RSpec.describe Api::V1::MerchantsController, type: :controller do
 
     it 'renders a JSON representation of the appropriate record' do
       merchant = Merchant.create(name: 'Toys R Us')
-      
+
       get :find_all, format: :json, name: merchant.name
       body = JSON.parse(response.body)
 
@@ -96,7 +109,7 @@ RSpec.describe Api::V1::MerchantsController, type: :controller do
 
     it 'is case insensitive' do
       merchant = Merchant.create(name: 'Toys R Us')
-      
+
       get :find_all, format: :json, name: 'toys r us'
       body = JSON.parse(response.body)
 
@@ -106,7 +119,7 @@ RSpec.describe Api::V1::MerchantsController, type: :controller do
 
     it 'finds by id' do
       merchant = Merchant.create(name: 'Toys R Us')
-      
+
       get :find_all, format: :json, id: merchant.id
       body = JSON.parse(response.body)
 
@@ -119,7 +132,7 @@ RSpec.describe Api::V1::MerchantsController, type: :controller do
     it 'responds successfully with an HTTP 200 status code' do
       merchant = Merchant.create(name: 'Toys R Us')
       merchant = Merchant.create(name: 'Other')
-      
+
       get :random, format: :json
 
       expect(response).to be_success
@@ -129,7 +142,7 @@ RSpec.describe Api::V1::MerchantsController, type: :controller do
     it 'renders a JSON representation of the appropriate records' do
       merchant = Merchant.create(name: 'Toys R Us')
       merchant = Merchant.create(name: 'Other')
-      
+
       results = []
       10.times do 
         get :random, format: :json
@@ -203,14 +216,14 @@ RSpec.describe Api::V1::MerchantsController, type: :controller do
                                      merchant_id: merchant.id,
                                      status:      'shipped')
       invoice_2     = Invoice.create(customer_id: customer.id,
-                                    merchant_id: merchant_2.id,
-                                    status:      'shipped')
+                                     merchant_id: merchant_2.id,
+                                     status:      'shipped')
       transaction   = Transaction.create(invoice_id:         invoice.id,
-                                       credit_card_number: '4654405418249632',
-                                       result:             'success')
+                                         credit_card_number: '4654405418249632',
+                                         result:             'success')
       transaction_2 = Transaction.create(invoice_id:         invoice_2.id,
-                                       credit_card_number: '4654405418249632',
-                                       result:             'success')
+                                         credit_card_number: '4654405418249632',
+                                         result:             'success')
       item          = Item.create(name:        'Ball',
                                   description: 'This is the description.',
                                   unit_price:  '12',

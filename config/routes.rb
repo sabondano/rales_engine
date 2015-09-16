@@ -44,12 +44,12 @@ Rails.application.routes.draw do
       get '/items/random',         to: 'items#random'
       get '/transactions/random',  to: 'transactions#random'
 
-      resources :customers,     only: [:show]
-      resources :merchants,     only: [:show]
-      resources :items,         only: [:show]
-      resources :invoices,      only: [:show]
-      resources :transactions,  only: [:show]
-      resources :invoice_items, only: [:show]
+      resources :customers,     only: [:index, :show]
+      resources :merchants,     only: [:index, :show]
+      resources :items,         only: [:index, :show]
+      resources :invoices,      only: [:index, :show]
+      resources :transactions,  only: [:index, :show]
+      resources :invoice_items, only: [:index, :show]
     end
   end
 end
