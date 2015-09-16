@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
       get '/merchants/most_revenue', to: 'merchants#most_revenue'
+      get '/merchants/most_items',   to: 'merchants#most_items'
+      get '/merchants/revenue',      to: 'merchants#revenue'
 
-      get '/customers/:id/invoices',      to: 'customers#invoices'
-      get '/customers/:id/transactions',  to: 'customers#transactions'
+      get '/customers/:id/invoices',     to: 'customers#invoices'
+      get '/customers/:id/transactions', to: 'customers#transactions'
 
       get '/transactions/:id/invoice', to: 'transactions#invoice'
 

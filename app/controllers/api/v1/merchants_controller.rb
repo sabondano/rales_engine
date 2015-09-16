@@ -34,9 +34,17 @@ class Api::V1::MerchantsController < ApplicationController
       each_serializer: MerchantRevenueSerializer
   end
 
+  def most_items
+    respond_with Merchant.most_items(params[:quantity].to_i)
+  end
+
+  def revenue
+    respond_with Merchant.total_revenue_for_date(find_params[:date])
+  end
+
   private
 
   def find_params
-    params.permit(:id, :name, :created_at, :updated_at)
+    params.permit(:id, :name, :created_at, :updated_at, :date)
   end
 end
