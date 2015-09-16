@@ -14,7 +14,8 @@ namespace :import_csvs do
     invoices_data.map { |attributes| Invoice.create!(attributes.to_h) }
 
     transactions_data = Parser.parse('./db/csv_data/transactions.csv')    
-    transactions_data.map { |attributes| Transaction.create!(attributes.to_h) }
+    transactions_data.map { |attributes| Transaction.create!(attributes.to_h
+      .except(:credit_card_expiration_date)) }
 
     invoice_items_data = Parser.parse('./db/csv_data/invoice_items.csv')    
     invoice_items_data.map { |attributes| InvoiceItem.create!(attributes.to_h) }
