@@ -192,4 +192,46 @@ RSpec.describe Api::V1::MerchantsController, type: :controller do
       expect(body.first[:status]).to eq('shipped')
     end
   end
+
+  describe 'GET #most_revenue' do
+    it 'responds successfully with an HTTP 200 status code' do
+      customer      = Customer.create(first_name: 'Sebastian',
+                                      last_name:  'Abondano')
+      merchant      = Merchant.create(name: 'Toys R Us')
+      merchant_2    = Merchant.create(name: 'Other') 
+      invoice       = Invoice.create(customer_id: customer.id,
+                                     merchant_id: merchant.id,
+                                     status:      'shipped')
+      invoice_2     = Invoice.create(customer_id: customer.id,
+                                    merchant_id: merchant_2.id,
+                                    status:      'shipped')
+      transaction   = Transaction.create(invoice_id:         invoice.id,
+                                       credit_card_number: '4654405418249632',
+                                       result:             'success')
+      transaction_2 = Transaction.create(invoice_id:         invoice_2.id,
+                                       credit_card_number: '4654405418249632',
+                                       result:             'success')
+      item          = Item.create(name:        'Ball',
+                                  description: 'This is the description.',
+                                  unit_price:  '12',
+                                  merchant_id: 1)
+
+      invoice_item  = InvoiceItem.create(item_id:    item.id,
+                                         invoice_id: invoice.id,
+                                         quantity:   '1',
+                                         unit_price: '12')
+      InvoiceItem.create(item_id: item.id,
+                         invoice_id: invoice_2.id,
+                         quantity: '5',
+                         unit_price: '12')
+
+      get :most_revenue, format: :json, quantity: 2
+      body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+      expect(body.count).to eq(2)
+      expect(body.first[:id]).to eq(merchant_2.id)
+    end
+  end
 end

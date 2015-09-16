@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      get '/merchants/most_revenue', to: 'merchants#most_revenue'
+
       get '/customers/:id/invoices',      to: 'customers#invoices'
       get '/customers/:id/transactions',  to: 'customers#transactions'
 
