@@ -9,7 +9,7 @@ class Merchant < ActiveRecord::Base
   end
 
   def revenue
-    (invoices.paid.joins(:invoice_items).sum('unit_price * quantity') / 100).to_f
+    invoices.paid.joins(:invoice_items).sum('unit_price * quantity')
   end
 
   def self.most_items(quantity)

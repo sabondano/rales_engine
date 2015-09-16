@@ -32,7 +32,7 @@ describe Merchant do
                          quantity: '5',
                          unit_price: '1200')
 
-      expect(merchant.revenue).to eq(12.00)
-      expect(merchant_2.revenue).to eq(60.00)
+      expect(merchant.revenue).to eq(1200.0)
+      expect(merchant_2.revenue).to eq(6000.0)
   end
 end

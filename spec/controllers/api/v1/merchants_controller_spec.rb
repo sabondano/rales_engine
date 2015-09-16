@@ -326,4 +326,35 @@ RSpec.describe Api::V1::MerchantsController, type: :controller do
     end
   end
 
+  describe 'GET #revenue_for_merchant' do
+    it 'responds successfully with an HTTP 200 status code' do
+      customer      = Customer.create(first_name: 'Sebastian',
+                                      last_name:  'Abondano')
+      merchant      = Merchant.create(name: 'Toys R Us')
+      invoice       = Invoice.create(customer_id: customer.id,
+                                     merchant_id: merchant.id,
+                                     status:      'shipped',
+                                     created_at: "2012-03-25")
+      transaction   = Transaction.create(invoice_id:         invoice.id,
+                                         credit_card_number: '4654405418249632',
+                                         result:             'success')
+      item          = Item.create(name:        'Ball',
+                                  description: 'This is the description.',
+                                  unit_price:  '12',
+                                  merchant_id: 1)
+
+      invoice_item  = InvoiceItem.create(item_id:    item.id,
+                                         invoice_id: invoice.id,
+                                         quantity:   '1',
+                                         unit_price: '12')
+
+      get :revenue_for_merchant, format: :json, id: merchant.id
+      body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+      expect(body[:revenue]).to eq("12.0")
+    end
+  end
+
 end
