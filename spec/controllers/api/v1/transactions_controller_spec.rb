@@ -34,7 +34,7 @@ RSpec.describe Api::V1::TransactionsController, type: :controller do
       get :show, format: :json, id: transaction.id
       body = JSON.parse(response.body)
 
-      expect(body.count).to eq(7)
+      expect(body.count).to eq(6)
       expect(body['id']).to eq(transaction.id)
       expect(body['invoice_id']).to eq(invoice.id)
       expect(body['credit_card_number']).to eq('4654405418249632')
@@ -84,7 +84,7 @@ RSpec.describe Api::V1::TransactionsController, type: :controller do
       get :find, format: :json, result: 'Success'
       body = JSON.parse(response.body)
 
-      expect(body.count).to eq(7)
+      expect(body.count).to eq(6)
       expect(body['id']).to eq(transaction.id)
       expect(body['invoice_id']).to eq(invoice.id)
       expect(body['credit_card_number']).to eq('4654405418249632')
@@ -107,7 +107,7 @@ RSpec.describe Api::V1::TransactionsController, type: :controller do
       get :find, format: :json, id: transaction.id
       body = JSON.parse(response.body)
 
-      expect(body.count).to eq(7)
+      expect(body.count).to eq(6)
       expect(body['id']).to eq(transaction.id)
       expect(body['invoice_id']).to eq(invoice.id)
       expect(body['credit_card_number']).to eq('4654405418249632')
@@ -153,7 +153,7 @@ RSpec.describe Api::V1::TransactionsController, type: :controller do
       body = JSON.parse(response.body)
 
       expect(body.count).to eq(2)
-      expect(body.first.count).to eq(7)
+      expect(body.first.count).to eq(6)
       expect(body.first['id']).to eq(transaction.id)
       expect(body.first['invoice_id']).to eq(invoice.id)
       expect(body.first['credit_card_number']).to eq('4654405418249632')
@@ -180,7 +180,7 @@ RSpec.describe Api::V1::TransactionsController, type: :controller do
       body = JSON.parse(response.body)
 
       expect(body.count).to eq(1)
-      expect(body.first.count).to eq(7)
+      expect(body.first.count).to eq(6)
       expect(body.first['id']).to eq(transaction.id)
       expect(body.first['invoice_id']).to eq(invoice.id)
       expect(body.first['credit_card_number']).to eq('4654405418249632')
