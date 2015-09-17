@@ -204,4 +204,39 @@ RSpec.describe Api::V1::CustomersController, type: :controller do
       expect(body.first[:result]).to eq(transaction.result)
     end
   end
+
+  describe 'GET #favorite_merchant' do
+    it 'responds successfully with an HTTP 200 status code' do
+      customer    = Customer.create(first_name: 'Sebastian',
+                                    last_name:  'Abondano')
+      merchant    = Merchant.create(name: 'Toys R Us')
+      merchant_2  = Merchant.create(name: 'Other')
+      invoice     = Invoice.create(customer_id: customer.id,
+                                   merchant_id: merchant.id,
+                                   status:      'shipped')
+      invoice_2   = Invoice.create(customer_id: customer.id,
+                                   merchant_id: merchant_2.id,
+                                   status:      'shipped')
+      invoice_3   = Invoice.create(customer_id: customer.id,
+                                   merchant_id: merchant_2.id,
+                                   status:      'shipped')
+      transaction = Transaction.create(invoice_id:         invoice.id,
+                                       credit_card_number: '4654405418249632',
+                                       result:             'success')
+      Transaction.create(invoice_id:         invoice_2.id,
+                         credit_card_number: '4654405418249632',
+                         result:             'success')
+      Transaction.create(invoice_id:         invoice_3.id,
+                         credit_card_number: '4654405418249632',
+                         result:             'success')
+
+      get :favorite_merchant, format: :json, id: customer.id
+      body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+      expect(body[:id]).to eq(merchant_2.id)
+      expect(body[:name]).to eq('Other')
+    end
+  end
 end
