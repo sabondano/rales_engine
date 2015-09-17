@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-09-16T21:16:13-06:00">2015-09-16T21:16:13-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-09-16T23:03:26-06:00">2015-09-16T23:03:26-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,15 +25,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.36
+         1.34
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>38</b> files in total.
-    <b>1337</b> relevant lines. 
-    <span class="green"><b>1337</b> lines covered</span> and
+    <b>1381</b> relevant lines. 
+    <span class="green"><b>1381</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -83,11 +83,11 @@
       <tr>
         <td class="strong"><a href="#f2f13e3e9370b79263d1394fbc5b9be78a44b9ea" class="src_link" title="app/controllers/api/v1/items_controller.rb">app/controllers/api/v1/items_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>41</td>
-        <td>21</td>
-        <td>21</td>
+        <td>49</td>
+        <td>25</td>
+        <td>25</td>
         <td>0</td>
-        <td>2.0</td>
+        <td>1.9</td>
       </tr>
       
       <tr>
@@ -117,7 +117,7 @@
         <td>4</td>
         <td>4</td>
         <td>0</td>
-        <td>38.3</td>
+        <td>38.8</td>
       </tr>
       
       <tr>
@@ -147,7 +147,7 @@
         <td>8</td>
         <td>8</td>
         <td>0</td>
-        <td>2.5</td>
+        <td>2.8</td>
       </tr>
       
       <tr>
@@ -163,11 +163,11 @@
       <tr>
         <td class="strong"><a href="#3ba62a537e5b7b4907d9b2c2d524dbf9ff00ab5a" class="src_link" title="app/models/item.rb">app/models/item.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>18</td>
-        <td>10</td>
-        <td>10</td>
+        <td>43</td>
+        <td>17</td>
+        <td>17</td>
         <td>0</td>
-        <td>1.2</td>
+        <td>1.3</td>
       </tr>
       
       <tr>
@@ -343,9 +343,9 @@
       <tr>
         <td class="strong"><a href="#0e68039380ada5a0ad016f5eef610ab2dfa7385a" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>63</td>
-        <td>48</td>
-        <td>48</td>
+        <td>65</td>
+        <td>50</td>
+        <td>50</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -383,11 +383,11 @@
       <tr>
         <td class="strong"><a href="#ccc26265fddf81265153be1e198972b2074f3fe0" class="src_link" title="spec/controllers/api/v1/items_controller_spec.rb">spec/controllers/api/v1/items_controller_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>331</td>
-        <td>170</td>
-        <td>170</td>
+        <td>411</td>
+        <td>201</td>
+        <td>201</td>
         <td>0</td>
-        <td>1.2</td>
+        <td>1.1</td>
       </tr>
       
       <tr>
@@ -1249,8 +1249,8 @@
     <h3>app/controllers/api/v1/items_controller.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>21</b> relevant lines. 
-      <span class="green"><b>21</b> lines covered</span> and
+      <b>25</b> relevant lines. 
+      <span class="green"><b>25</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1471,34 +1471,82 @@
         <li class="covered" data-hits="1" data-linenumber="36">
           <span class="hits">1</span>
           
-          <code class="ruby">  private</code>
+          <code class="ruby">  def most_items</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="37">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="38">
+        <li class="covered" data-hits="1" data-linenumber="37">
           <span class="hits">1</span>
           
-          <code class="ruby">  def find_params</code>
+          <code class="ruby">    respond_with Item.most_items(params[:quantity].to_i)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="39">
-          <span class="hits">6</span>
-          
-          <code class="ruby">    params.permit(:id, :name, :description, :unit_price, :merchant_id, :created_at, :updated_at, :quantity)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="40">
+        <li class="never" data-hits="" data-linenumber="38">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="41">
+        <li class="never" data-hits="" data-linenumber="39">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="40">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def best_day</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="41">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    respond_with Item.find(params[:id]).best_day</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="42">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="43">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="44">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  private</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="45">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="46">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def find_params</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="47">
+          <span class="hits">6</span>
+          
+          <code class="ruby">    params.permit(:id, :name, :description, :unit_price, :merchant_id, :created_at, :updated_at, :quantity)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="48">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="49">
           
           
           <code class="ruby">end</code>
@@ -2200,8 +2248,8 @@
           <code class="ruby">  def default_serializer_options</code>
         </li>
       
-        <li class="covered" data-hits="150" data-linenumber="7">
-          <span class="hits">150</span>
+        <li class="covered" data-hits="152" data-linenumber="7">
+          <span class="hits">152</span>
           
           <code class="ruby">    { root: false }</code>
         </li>
@@ -2356,8 +2404,8 @@
           <code class="ruby">  def self.paid</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="9">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="15" data-linenumber="9">
+          <span class="hits">15</span>
           
           <code class="ruby">    joins(:transactions).where(&quot;result = &#39;success&#39;&quot;)</code>
         </li>
@@ -2437,8 +2485,8 @@
     <h3>app/models/item.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>10</b> relevant lines. 
-      <span class="green"><b>10</b> lines covered</span> and
+      <b>17</b> relevant lines. 
+      <span class="green"><b>17</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -2485,7 +2533,7 @@
         <li class="covered" data-hits="3" data-linenumber="7">
           <span class="hits">3</span>
           
-          <code class="ruby">    top_selling_items_ids(quantity).map { |id| Item.find(id) }</code>
+          <code class="ruby">    ids_of_top_selling_items_by_revenue(quantity).map { |id| Item.find(id) }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="8">
@@ -2503,52 +2551,202 @@
         <li class="covered" data-hits="1" data-linenumber="10">
           <span class="hits">1</span>
           
-          <code class="ruby">  def self.top_selling_items_ids(quantity)</code>
+          <code class="ruby">  def self.ids_of_top_selling_items_by_revenue(quantity)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="11">
           
           
-          <code class="ruby">    grouped_paid_invoices_by_item.sum(&#39;quantity * invoice_items.unit_price&#39;).sort_by(&amp;:last)</code>
+          <code class="ruby">    group_paid_invoices_by_item.sum(&#39;quantity * invoice_items.unit_price&#39;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="12">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="12">
           
-          <code class="ruby">      .reverse.first(quantity).map(&amp;:first)</code>
+          
+          <code class="ruby">      .sort_by(&amp;:last)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="13">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">      .reverse</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="14">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">      .first(quantity)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="15">
           <span class="hits">1</span>
           
-          <code class="ruby">  def self.grouped_paid_invoices_by_item</code>
+          <code class="ruby">      .map(&amp;:first)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="16">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    Invoice.paid.joins(:items).group(:item_id)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="17">
+        <li class="never" data-hits="" data-linenumber="16">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="18">
+        <li class="never" data-hits="" data-linenumber="17">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="18">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def self.group_paid_invoices_by_item</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="19">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    Invoice.paid.joins(:items).group(:item_id)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="20">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="21">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="22">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def self.most_items(quantity)</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="23">
+          <span class="hits">3</span>
+          
+          <code class="ruby">    ids_of_top_selling_items_by_units(quantity).map { |id| Item.find(id) }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="24">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="25">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="26">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def self.ids_of_top_selling_items_by_units(quantity)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="27">
+          
+          
+          <code class="ruby">    group_paid_invoices_by_item.sum(&#39;quantity&#39;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="28">
+          
+          
+          <code class="ruby">      .sort_by(&amp;:last)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="29">
+          
+          
+          <code class="ruby">      .reverse</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="30">
+          
+          
+          <code class="ruby">      .first(quantity)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="31">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      .map(&amp;:first)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="32">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="33">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="34">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def best_day</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="35">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    day = invoices.paid</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="36">
+          
+          
+          <code class="ruby">      .group(&#39;invoices.created_at&#39;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="37">
+          
+          
+          <code class="ruby">      .sum(&#39;quantity * unit_price&#39;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="38">
+          
+          
+          <code class="ruby">      .sort_by(&amp;:last)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="39">
+          
+          
+          <code class="ruby">      .reverse</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="40">
+          
+          
+          <code class="ruby">      .first[0]</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="41">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    { best_day: day }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="42">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="43">
           
           
           <code class="ruby">end</code>
@@ -4255,8 +4453,8 @@
     <h3>config/routes.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>48</b> relevant lines. 
-      <span class="green"><b>48</b> lines covered</span> and
+      <b>50</b> relevant lines. 
+      <span class="green"><b>50</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -4288,82 +4486,82 @@
           <code class="ruby">      get &#39;/items/most_revenue&#39;, to: &#39;items#most_revenue&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="5">
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">      get &#39;/items/most_items&#39;,   to: &#39;items#most_items&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="6">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/merchants/:id/revenue&#39;,                         to: &#39;merchants#revenue_for_merchant&#39;</code>
+          <code class="ruby">      get &#39;/items/:id/best_day&#39;, to: &#39;items#best_day&#39;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="7">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="7">
           
-          <code class="ruby">      get &#39;/merchants/:id/favorite_customer&#39;,               to: &#39;merchants#favorite_customer&#39;</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="8">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/merchants/:id/customers_with_pending_invoices&#39;, to: &#39;merchants#customers_with_pending_invoices&#39;</code>
+          <code class="ruby">      get &#39;/merchants/:id/revenue&#39;,                         to: &#39;merchants#revenue_for_merchant&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="9">
+        <li class="covered" data-hits="1" data-linenumber="9">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">      get &#39;/merchants/:id/favorite_customer&#39;,               to: &#39;merchants#favorite_customer&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="10">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/merchants/most_revenue&#39;, to: &#39;merchants#most_revenue&#39;</code>
+          <code class="ruby">      get &#39;/merchants/:id/customers_with_pending_invoices&#39;, to: &#39;merchants#customers_with_pending_invoices&#39;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="11">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="11">
           
-          <code class="ruby">      get &#39;/merchants/most_items&#39;,   to: &#39;merchants#most_items&#39;</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="12">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/merchants/revenue&#39;,      to: &#39;merchants#revenue&#39;</code>
+          <code class="ruby">      get &#39;/merchants/most_revenue&#39;, to: &#39;merchants#most_revenue&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="13">
+        <li class="covered" data-hits="1" data-linenumber="13">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">      get &#39;/merchants/most_items&#39;,   to: &#39;merchants#most_items&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="14">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/customers/:id/invoices&#39;,     to: &#39;customers#invoices&#39;</code>
+          <code class="ruby">      get &#39;/merchants/revenue&#39;,      to: &#39;merchants#revenue&#39;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="15">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      get &#39;/customers/:id/transactions&#39;, to: &#39;customers#transactions&#39;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="16">
+        <li class="never" data-hits="" data-linenumber="15">
           
           
           <code class="ruby"></code>
         </li>
       
+        <li class="covered" data-hits="1" data-linenumber="16">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      get &#39;/customers/:id/invoices&#39;,     to: &#39;customers#invoices&#39;</code>
+        </li>
+      
         <li class="covered" data-hits="1" data-linenumber="17">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/transactions/:id/invoice&#39;, to: &#39;transactions#invoice&#39;</code>
+          <code class="ruby">      get &#39;/customers/:id/transactions&#39;, to: &#39;customers#transactions&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="18">
@@ -4375,268 +4573,280 @@
         <li class="covered" data-hits="1" data-linenumber="19">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/items/:id/invoice_items&#39;, to: &#39;items#invoice_items&#39;</code>
+          <code class="ruby">      get &#39;/transactions/:id/invoice&#39;, to: &#39;transactions#invoice&#39;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="20">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      get &#39;/items/:id/merchant&#39;,      to: &#39;items#merchant&#39;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="21">
+        <li class="never" data-hits="" data-linenumber="20">
           
           
           <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="21">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      get &#39;/items/:id/invoice_items&#39;, to: &#39;items#invoice_items&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="22">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/invoice_items/:id/invoice&#39;,  to: &#39;invoice_items#invoice&#39;</code>
+          <code class="ruby">      get &#39;/items/:id/merchant&#39;,      to: &#39;items#merchant&#39;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="23">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      get &#39;/invoice_items/:id/item&#39;,     to: &#39;invoice_items#item&#39;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="24">
+        <li class="never" data-hits="" data-linenumber="23">
           
           
           <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="24">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      get &#39;/invoice_items/:id/invoice&#39;,  to: &#39;invoice_items#invoice&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="25">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/invoices/:id/transactions&#39;,  to: &#39;invoices#transactions&#39;</code>
+          <code class="ruby">      get &#39;/invoice_items/:id/item&#39;,     to: &#39;invoice_items#item&#39;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="26">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="26">
           
-          <code class="ruby">      get &#39;/invoices/:id/invoice_items&#39;, to: &#39;invoices#invoice_items&#39;</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="27">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/invoices/:id/items&#39;,         to: &#39;invoices#items&#39;</code>
+          <code class="ruby">      get &#39;/invoices/:id/transactions&#39;,  to: &#39;invoices#transactions&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="28">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/invoices/:id/customer&#39;,      to: &#39;invoices#customer&#39;</code>
+          <code class="ruby">      get &#39;/invoices/:id/invoice_items&#39;, to: &#39;invoices#invoice_items&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="29">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/invoices/:id/merchant&#39;,      to: &#39;invoices#merchant&#39;</code>
+          <code class="ruby">      get &#39;/invoices/:id/items&#39;,         to: &#39;invoices#items&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="30">
+        <li class="covered" data-hits="1" data-linenumber="30">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">      get &#39;/invoices/:id/customer&#39;,      to: &#39;invoices#customer&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="31">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/merchants/:id/items&#39;,    to: &#39;merchants#items&#39;</code>
+          <code class="ruby">      get &#39;/invoices/:id/merchant&#39;,      to: &#39;invoices#merchant&#39;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="32">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      get &#39;/merchants/:id/invoices&#39;, to: &#39;merchants#invoices&#39;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="33">
+        <li class="never" data-hits="" data-linenumber="32">
           
           
           <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="33">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      get &#39;/merchants/:id/items&#39;,    to: &#39;merchants#items&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="34">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/merchants/find&#39;,     to: &#39;merchants#find&#39;</code>
+          <code class="ruby">      get &#39;/merchants/:id/invoices&#39;, to: &#39;merchants#invoices&#39;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="35">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="35">
           
-          <code class="ruby">      get &#39;/customers/find&#39;,     to: &#39;customers#find&#39;</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="36">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/invoice_items/find&#39;, to: &#39;invoice_items#find&#39;</code>
+          <code class="ruby">      get &#39;/merchants/find&#39;,     to: &#39;merchants#find&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="37">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/invoices/find&#39;,      to: &#39;invoices#find&#39;</code>
+          <code class="ruby">      get &#39;/customers/find&#39;,     to: &#39;customers#find&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="38">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/items/find&#39;,         to: &#39;items#find&#39;</code>
+          <code class="ruby">      get &#39;/invoice_items/find&#39;, to: &#39;invoice_items#find&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="39">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/transactions/find&#39;,  to: &#39;transactions#find&#39;</code>
+          <code class="ruby">      get &#39;/invoices/find&#39;,      to: &#39;invoices#find&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="40">
+        <li class="covered" data-hits="1" data-linenumber="40">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">      get &#39;/items/find&#39;,         to: &#39;items#find&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="41">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/merchants/find_all&#39;,        to: &#39;merchants#find_all&#39;</code>
+          <code class="ruby">      get &#39;/transactions/find&#39;,  to: &#39;transactions#find&#39;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="42">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="42">
           
-          <code class="ruby">      get &#39;/customers/find_all&#39;,        to: &#39;customers#find_all&#39;</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="43">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/invoice_items/find_all&#39;,    to: &#39;invoice_items#find_all&#39;</code>
+          <code class="ruby">      get &#39;/merchants/find_all&#39;,        to: &#39;merchants#find_all&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="44">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/invoices/find_all&#39;,         to: &#39;invoices#find_all&#39;</code>
+          <code class="ruby">      get &#39;/customers/find_all&#39;,        to: &#39;customers#find_all&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="45">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/items/find_all&#39;,            to: &#39;items#find_all&#39;</code>
+          <code class="ruby">      get &#39;/invoice_items/find_all&#39;,    to: &#39;invoice_items#find_all&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="46">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/transactions/find_all&#39;,     to: &#39;transactions#find_all&#39;</code>
+          <code class="ruby">      get &#39;/invoices/find_all&#39;,         to: &#39;invoices#find_all&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="47">
+        <li class="covered" data-hits="1" data-linenumber="47">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">      get &#39;/items/find_all&#39;,            to: &#39;items#find_all&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="48">
           <span class="hits">1</span>
           
-          <code class="ruby">      get &#39;/merchants/random&#39;,     to: &#39;merchants#random&#39;</code>
+          <code class="ruby">      get &#39;/transactions/find_all&#39;,     to: &#39;transactions#find_all&#39;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="49">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      get &#39;/customers/random&#39;,     to: &#39;customers#random&#39;</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="50">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      get &#39;/invoice_items/random&#39;, to: &#39;invoice_items#random&#39;</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="51">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      get &#39;/invoices/random&#39;,      to: &#39;invoices#random&#39;</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="52">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      get &#39;/items/random&#39;,         to: &#39;items#random&#39;</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="53">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      get &#39;/transactions/random&#39;,  to: &#39;transactions#random&#39;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="54">
+        <li class="never" data-hits="" data-linenumber="49">
           
           
           <code class="ruby"></code>
         </li>
       
+        <li class="covered" data-hits="1" data-linenumber="50">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      get &#39;/merchants/random&#39;,     to: &#39;merchants#random&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="51">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      get &#39;/customers/random&#39;,     to: &#39;customers#random&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="52">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      get &#39;/invoice_items/random&#39;, to: &#39;invoice_items#random&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="53">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      get &#39;/invoices/random&#39;,      to: &#39;invoices#random&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="54">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      get &#39;/items/random&#39;,         to: &#39;items#random&#39;</code>
+        </li>
+      
         <li class="covered" data-hits="1" data-linenumber="55">
           <span class="hits">1</span>
           
-          <code class="ruby">      resources :customers,     only: [:index, :show]</code>
+          <code class="ruby">      get &#39;/transactions/random&#39;,  to: &#39;transactions#random&#39;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="56">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="56">
           
-          <code class="ruby">      resources :merchants,     only: [:index, :show]</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="57">
           <span class="hits">1</span>
           
-          <code class="ruby">      resources :items,         only: [:index, :show]</code>
+          <code class="ruby">      resources :customers,     only: [:index, :show]</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="58">
           <span class="hits">1</span>
           
-          <code class="ruby">      resources :invoices,      only: [:index, :show]</code>
+          <code class="ruby">      resources :merchants,     only: [:index, :show]</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="59">
           <span class="hits">1</span>
           
-          <code class="ruby">      resources :transactions,  only: [:index, :show]</code>
+          <code class="ruby">      resources :items,         only: [:index, :show]</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="60">
           <span class="hits">1</span>
           
+          <code class="ruby">      resources :invoices,      only: [:index, :show]</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="61">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      resources :transactions,  only: [:index, :show]</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="62">
+          <span class="hits">1</span>
+          
           <code class="ruby">      resources :invoice_items, only: [:index, :show]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="61">
+        <li class="never" data-hits="" data-linenumber="63">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="62">
+        <li class="never" data-hits="" data-linenumber="64">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="63">
+        <li class="never" data-hits="" data-linenumber="65">
           
           
           <code class="ruby">end</code>
@@ -10003,8 +10213,8 @@
     <h3>spec/controllers/api/v1/items_controller_spec.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>170</b> relevant lines. 
-      <span class="green"><b>170</b> lines covered</span> and
+      <b>201</b> relevant lines. 
+      <span class="green"><b>201</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -11993,6 +12203,486 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="331">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="332">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    describe &#39;GET #most_items&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="333">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      it &#39;responds successfully with an HTTP 200 status code&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="334">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        customer    = Customer.create(first_name: &#39;Sebastian&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="335">
+          
+          
+          <code class="ruby">                                      last_name:  &#39;Abondano&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="336">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        merchant    = Merchant.create(name: &#39;Toys R Us&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="337">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        invoice     = Invoice.create(customer_id: customer.id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="338">
+          
+          
+          <code class="ruby">                                     merchant_id: merchant.id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="339">
+          
+          
+          <code class="ruby">                                     status:      &#39;shipped&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="340">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        item = Item.create(name:        &#39;Ball&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="341">
+          
+          
+          <code class="ruby">                           description: &#39;This is the description.&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="342">
+          
+          
+          <code class="ruby">                           unit_price:  &#39;12&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="343">
+          
+          
+          <code class="ruby">                           merchant_id: 1)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="344">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        item_2 = Item.create(name: &#39;Rocket&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="345">
+          
+          
+          <code class="ruby">                             description: &#39;This is the description.&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="346">
+          
+          
+          <code class="ruby">                             unit_price: &#39;18&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="347">
+          
+          
+          <code class="ruby">                             merchant_id: merchant.id)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="348">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        transaction = Transaction.create(invoice_id:         invoice.id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="349">
+          
+          
+          <code class="ruby">                                         credit_card_number: &#39;4654405418249632&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="350">
+          
+          
+          <code class="ruby">                                         result:             &#39;success&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="351">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        invoice_item = InvoiceItem.create(item_id:    item.id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="352">
+          
+          
+          <code class="ruby">                                          invoice_id: invoice.id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="353">
+          
+          
+          <code class="ruby">                                          quantity:   &#39;5&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="354">
+          
+          
+          <code class="ruby">                                          unit_price: &#39;12&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="355">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        InvoiceItem.create(item_id:    item_2.id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="356">
+          
+          
+          <code class="ruby">                           invoice_id: invoice.id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="357">
+          
+          
+          <code class="ruby">                           quantity:   &#39;1&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="358">
+          
+          
+          <code class="ruby">                           unit_price: &#39;12&#39;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="359">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="360">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        get :most_items, format: :json, quantity: 2</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="361">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        body = JSON.parse(response.body, symbolize_names: true)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="362">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="363">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        expect(response).to be_success</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="364">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        expect(response).to have_http_status(200)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="365">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        expect(body.first[:name]).to eq(item.name)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="366">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="367">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="368">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="369">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    describe &#39;GET #best_day&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="370">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      it &#39;responds successfully with an HTTP 200 status code&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="371">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        customer    = Customer.create(first_name: &#39;Sebastian&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="372">
+          
+          
+          <code class="ruby">                                      last_name:  &#39;Abondano&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="373">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        merchant    = Merchant.create(name: &#39;Toys R Us&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="374">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        invoice     = Invoice.create(customer_id: customer.id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="375">
+          
+          
+          <code class="ruby">                                     merchant_id: merchant.id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="376">
+          
+          
+          <code class="ruby">                                     status:      &#39;shipped&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="377">
+          
+          
+          <code class="ruby">                                     created_at: &quot;2012-03-23&quot;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="378">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        invoice_2     = Invoice.create(customer_id: customer.id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="379">
+          
+          
+          <code class="ruby">                                       merchant_id: merchant.id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="380">
+          
+          
+          <code class="ruby">                                       status:      &#39;shipped&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="381">
+          
+          
+          <code class="ruby">                                       created_at: &quot;2012-03-24&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="382">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="383">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        item = Item.create(name:        &#39;Ball&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="384">
+          
+          
+          <code class="ruby">                           description: &#39;This is the description.&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="385">
+          
+          
+          <code class="ruby">                           unit_price:  &#39;12&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="386">
+          
+          
+          <code class="ruby">                           merchant_id: 1)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="387">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        transaction = Transaction.create(invoice_id:         invoice.id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="388">
+          
+          
+          <code class="ruby">                                         credit_card_number: &#39;4654405418249632&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="389">
+          
+          
+          <code class="ruby">                                         result:             &#39;success&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="390">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        transaction_2 = Transaction.create(invoice_id:         invoice_2.id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="391">
+          
+          
+          <code class="ruby">                                           credit_card_number: &#39;4654405418249632&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="392">
+          
+          
+          <code class="ruby">                                           result:             &#39;success&#39;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="393">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="394">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        invoice_item = InvoiceItem.create(item_id:    item.id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="395">
+          
+          
+          <code class="ruby">                                          invoice_id: invoice.id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="396">
+          
+          
+          <code class="ruby">                                          quantity:   &#39;5&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="397">
+          
+          
+          <code class="ruby">                                          unit_price: &#39;12&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="398">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        InvoiceItem.create(item_id:    item.id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="399">
+          
+          
+          <code class="ruby">                           invoice_id: invoice_2.id,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="400">
+          
+          
+          <code class="ruby">                           quantity:   &#39;1&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="401">
+          
+          
+          <code class="ruby">                           unit_price: &#39;12&#39;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="402">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="403">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        get :best_day, format: :json, id: item.id</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="404">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        body = JSON.parse(response.body, symbolize_names: true)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="405">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="406">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        expect(response).to be_success</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="407">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        expect(response).to have_http_status(200)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="408">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        expect(body[:best_day]).to eq(&quot;2012-03-23T00:00:00.000Z&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="409">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="410">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="411">
           
           
           <code class="ruby">end</code>

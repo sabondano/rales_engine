@@ -33,6 +33,14 @@ class Api::V1::ItemsController < ApplicationController
     respond_with Item.most_revenue(params[:quantity].to_i)
   end
 
+  def most_items
+    respond_with Item.most_items(params[:quantity].to_i)
+  end
+
+  def best_day
+    respond_with Item.find(params[:id]).best_day
+  end
+
   private
 
   def find_params
