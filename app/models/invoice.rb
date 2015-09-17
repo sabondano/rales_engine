@@ -8,4 +8,5 @@ class Invoice < ActiveRecord::Base
   def self.paid
     joins(:transactions).where("result = 'success'")
   end
+
 end

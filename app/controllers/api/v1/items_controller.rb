@@ -29,9 +29,13 @@ class Api::V1::ItemsController < ApplicationController
     respond_with Item.find(params[:id]).merchant
   end
 
+  def most_revenue
+    respond_with Item.most_revenue(params[:quantity].to_i)
+  end
+
   private
 
   def find_params
-    params.permit(:id, :name, :description, :unit_price, :merchant_id, :created_at, :updated_at)
+    params.permit(:id, :name, :description, :unit_price, :merchant_id, :created_at, :updated_at, :quantity)
   end
 end
