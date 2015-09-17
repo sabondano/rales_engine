@@ -1,8 +1,22 @@
 Rails.application.routes.draw do
-  namespace :api do
+  namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
-      get '/customers/:id/invoices',      to: 'customers#invoices'
-      get '/customers/:id/transactions',  to: 'customers#transactions'
+      get '/customers/:id/favorite_merchant', to: 'customers#favorite_merchant'
+
+      get '/items/most_revenue', to: 'items#most_revenue'
+      get '/items/most_items',   to: 'items#most_items'
+      get '/items/:id/best_day', to: 'items#best_day'
+
+      get '/merchants/:id/revenue',                         to: 'merchants#revenue_for_merchant'
+      get '/merchants/:id/favorite_customer',               to: 'merchants#favorite_customer'
+      get '/merchants/:id/customers_with_pending_invoices', to: 'merchants#customers_with_pending_invoices'
+
+      get '/merchants/most_revenue', to: 'merchants#most_revenue'
+      get '/merchants/most_items',   to: 'merchants#most_items'
+      get '/merchants/revenue',      to: 'merchants#revenue'
+
+      get '/customers/:id/invoices',     to: 'customers#invoices'
+      get '/customers/:id/transactions', to: 'customers#transactions'
 
       get '/transactions/:id/invoice', to: 'transactions#invoice'
 
@@ -42,13 +56,12 @@ Rails.application.routes.draw do
       get '/items/random',         to: 'items#random'
       get '/transactions/random',  to: 'transactions#random'
 
-      resources :customers,     only: [:show]
-      resources :merchants,     only: [:show]
-      resources :items,         only: [:show]
-      resources :invoices,      only: [:show]
-      resources :transactions,  only: [:show]
-      resources :invoice_items, only: [:show]
-
+      resources :customers,     only: [:index, :show]
+      resources :merchants,     only: [:index, :show]
+      resources :items,         only: [:index, :show]
+      resources :invoices,      only: [:index, :show]
+      resources :transactions,  only: [:index, :show]
+      resources :invoice_items, only: [:index, :show]
     end
   end
 end

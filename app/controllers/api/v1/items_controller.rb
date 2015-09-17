@@ -1,16 +1,20 @@
 class Api::V1::ItemsController < ApplicationController
   respond_to :json
 
+  def index
+    respond_with Item.all
+  end
+
   def show
     respond_with Item.find_by(id: params[:id])
   end
 
   def find
-    respond_with Item.find_by_attribute(params.keys[0], params.values[0])
+    respond_with Item.find_by(find_params)
   end
 
   def find_all
-    respond_with Item.find_all_by_attribute(params.keys[0], params.values[0])
+   respond_with Item.where(find_params)
   end
 
   def random
@@ -23,5 +27,23 @@ class Api::V1::ItemsController < ApplicationController
 
   def merchant
     respond_with Item.find(params[:id]).merchant
+  end
+
+  def most_revenue
+    respond_with Item.most_revenue(params[:quantity].to_i)
+  end
+
+  def most_items
+    respond_with Item.most_items(params[:quantity].to_i)
+  end
+
+  def best_day
+    respond_with Item.find(params[:id]).best_day
+  end
+
+  private
+
+  def find_params
+    params.permit(:id, :name, :description, :unit_price, :merchant_id, :created_at, :updated_at, :quantity)
   end
 end

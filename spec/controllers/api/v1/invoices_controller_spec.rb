@@ -1,6 +1,30 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::InvoicesController, type: :controller do
+  describe 'GET #index' do
+    it 'renders a JSON representation of the appropriate record' do
+      customer = Customer.create(first_name: 'Sebastian',
+                                 last_name:  'Abondano')
+      merchant = Merchant.create(name: 'Toys R Us')
+      invoice  = Invoice.create(customer_id: customer.id,
+                                merchant_id: merchant.id,
+                                status: 'shipped')
+      Invoice.create(customer_id: customer.id,
+                     merchant_id: merchant.id,
+                     status: 'shipped')
+
+      get :index, format: :json
+      body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(body.count).to eq(2)
+      expect(body.first.count).to eq(6)
+      expect(body.first[:id]).to eq(invoice.id)
+      expect(body.first[:customer_id]).to eq(customer.id)
+      expect(body.first[:merchant_id]).to eq(merchant.id)
+      expect(body.first[:status]).to eq('shipped')
+    end
+  end
+
   describe 'GET #show' do
     it 'responds successfully with an HTTP 200 status code' do
       customer = Customer.create(first_name: 'Sebastian',
@@ -68,7 +92,7 @@ RSpec.describe Api::V1::InvoicesController, type: :controller do
                                 merchant_id: merchant.id,
                                 status: 'shipped')
 
-      get :find, format: :json, status: 'Shipped'
+      get :find, format: :json, status: 'shipped'
       body = JSON.parse(response.body)
 
       expect(body.count).to eq(6)
@@ -109,7 +133,7 @@ RSpec.describe Api::V1::InvoicesController, type: :controller do
                      merchant_id: merchant.id,
                      status: 'shipped')
 
-      get :find_all, format: :json, status: 'Shipped'
+      get :find_all, format: :json, status: 'shipped'
       body = JSON.parse(response.body)
 
       expect(body.count).to eq(2)
