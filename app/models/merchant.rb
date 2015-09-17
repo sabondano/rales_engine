@@ -35,16 +35,15 @@ class Merchant < ActiveRecord::Base
   end
 
   def favorite_customer
-    id = transactions.successful
-           .group(:customer_id)
-           .count(:transactions)
-           .sort_by(&:first).last[0]
-
-    Customer.find_by(id: id)
+    Customer.find(invoices
+                    .paid
+                    .group(:customer_id)
+                    .count
+                    .sort_by(&:first)
+                    .last[0])
   end
 
   def customers_with_pending_invoices
-    pending_invoices = invoices - invoices.paid
-    pending_invoices.map { |invoice| invoice.customer }
+    invoices.failed.map { |invoice| invoice.customer }.uniq
   end
 end

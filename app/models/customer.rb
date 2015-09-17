@@ -12,7 +12,7 @@ class Customer < ActiveRecord::Base
     invoices.paid.group(:merchant_id).count
   end
 
-  def merchant_with_most_invoices(invoices)
-    invoices.sort_by { |merchant_id, count| count }.last[0]
+  def merchant_with_most_invoices(merchant_invoice_count)
+    merchant_invoice_count.sort_by { |merchant_id, count| count }.last[0]
   end
 end
